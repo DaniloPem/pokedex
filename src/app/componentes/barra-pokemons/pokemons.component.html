@@ -3,11 +3,7 @@
     <img class="icone-button" src="../../../assets/icones/back.svg" />
   </button>
   <div class="pokemons-div">
-    <mat-button-toggle-group [(ngModel)]="pokemons" vertical="false">
-      <mat-button-toggle *ngFor="let pokemon of pokemons"
-        >{{ pokemon }}
-      </mat-button-toggle>
-    </mat-button-toggle-group>
+    <app-retrato-pokemon></app-retrato-pokemon>
   </div>
   <button mat-fab class="button">
     <img class="icone-button" src="../../../assets/icones/forward.svg" />
