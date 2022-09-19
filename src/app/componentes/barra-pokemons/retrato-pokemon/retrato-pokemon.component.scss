@@ -1,0 +1,13 @@
+.retrato-div {
+  height: 100%;
+  background: rgba(92, 92, 92, 0.6);
+  border: 2px solid white;
+  border-radius: calc(100%/5);
+  cursor: pointer;
+}
+
+.retrato-pokemon {
+  max-height: 90%;
+  max-width: 90%;
+  margin: 5%;
+}

@@ -3,7 +3,10 @@
     <img class="icone-button" src="../../../assets/icones/back.svg" />
   </button>
   <div class="pokemons-div">
-    <app-retrato-pokemon></app-retrato-pokemon>
+    <app-retrato-pokemon
+      *ngFor="let pokemon of pokemons"
+      [pokemonUrl]="pokemon.url"
+    ></app-retrato-pokemon>
   </div>
   <button mat-fab class="button">
     <img class="icone-button" src="../../../assets/icones/forward.svg" />

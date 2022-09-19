@@ -1,7 +1,7 @@
 .pokemons-conteiner {
   display: flex;
   width: 80%;
-  height: 20%;
+  height: auto;
   padding: 5px;
   border: 1px solid black;
   margin: 0 10% 0 10%;
@@ -11,14 +11,16 @@
 }
 
 .pokemons-div {
+  display: flex;
   width: 80%;
   height: 80%;
-  border: 1px solid black;
   margin: auto auto;
+  gap: 3%;
 }
 
 .button {
   margin: auto auto;
+  cursor: pointer;
 }
 
 
