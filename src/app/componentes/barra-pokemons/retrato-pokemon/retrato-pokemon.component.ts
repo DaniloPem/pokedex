@@ -13,10 +13,8 @@ export class RetratoPokemonComponent implements OnInit {
   constructor(private pokemonsService: PokemonsService) {}
 
   ngOnInit(): void {
-    this.pokemonsService
-      .buscarPokemon(this.pokemonUrl)
-      .subscribe((res: any) => {
-        this.urlImagem = res.sprites.other['official-artwork'].front_default;
-      });
+    this.pokemonsService.buscarPorUrl(this.pokemonUrl).subscribe((res: any) => {
+      this.urlImagem = res.sprites.other['official-artwork'].front_default;
+    });
   }
 }

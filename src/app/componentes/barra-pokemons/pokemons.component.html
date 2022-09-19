@@ -1,5 +1,5 @@
 <div class="pokemons-conteiner">
-  <button mat-fab class="button">
+  <button mat-fab class="button" (click)="previousListaPokemons()">
     <img class="icone-button" src="../../../assets/icones/back.svg" />
   </button>
   <div class="pokemons-div">
@@ -8,7 +8,7 @@
       [pokemonUrl]="pokemon.url"
     ></app-retrato-pokemon>
   </div>
-  <button mat-fab class="button">
+  <button mat-fab class="button" (click)="nextListaPokemons()">
     <img class="icone-button" src="../../../assets/icones/forward.svg" />
   </button>
   <button mat-fab class="button">

@@ -15,7 +15,7 @@ export class PokemonsService {
     });
   }
 
-  buscarPokemon(url: string) {
+  buscarPorUrl(url: string) {
     return this.httpClient.get(url);
   }
 }

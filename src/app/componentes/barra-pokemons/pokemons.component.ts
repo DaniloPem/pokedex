@@ -10,12 +10,36 @@ import { Component, OnInit } from '@angular/core';
 export class PokemonsComponent implements OnInit {
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
+  next: string | null = null;
+  previous: string | null = null;
 
   constructor(private pokemonsService: PokemonsService) {}
 
   ngOnInit(): void {
     this.pokemonsService.listarPokemons().subscribe((res: any) => {
       this.pokemons = res.results;
+      this.next = res.next;
+      this.previous = res.previous;
     });
+  }
+
+  nextListaPokemons() {
+    if (this.next !== null) {
+      this.pokemonsService.buscarPorUrl(this.next).subscribe((res: any) => {
+        this.pokemons = res.results;
+        this.next = res.next;
+        this.previous = res.previous;
+      });
+    }
+  }
+
+  previousListaPokemons() {
+    if (this.previous !== null) {
+      this.pokemonsService.buscarPorUrl(this.previous).subscribe((res: any) => {
+        this.pokemons = res.results;
+        this.next = res.next;
+        this.previous = res.previous;
+      });
+    }
   }
 }
