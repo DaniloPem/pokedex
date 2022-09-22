@@ -1,0 +1,114 @@
+@mixin lateraisPokedex() {
+  position: absolute;
+  height: calc(100vh - 4px);
+  width: calc(25vw - 8px);
+  top: 0;
+  background: rgb(206, 37, 37);
+  border: 2px solid black;
+  overflow: hidden;
+}
+
+@mixin setorCircular($tamanho, $rotacao, $semicirculo: false) {
+  position: absolute;
+  border-radius: 50%;
+  width: $tamanho;
+  height: $tamanho;
+  transform: rotate($rotacao);
+  @if $semicirculo {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+    background: black;
+    border: 2px solid black;
+    box-shadow: inset 0 0 0 5px white;
+  } @else {
+    clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+    border: 7px solid black;
+  }
+}
+
+.left {
+  @include lateraisPokedex();
+  left: 0;
+}
+
+.right {
+  @include lateraisPokedex();
+  right: 0;
+}
+
+.setor-circular-left-top {
+  @include setorCircular(25vw, 0deg, $semicirculo: false);
+  top: calc((12.5vw + 7px)*(-1));
+  left: calc((12.5vw + 7px)*(-1));
+}
+
+.sc-left-top {
+  @include setorCircular(12.5vw, 0deg, $semicirculo: false);
+  top: calc((6.25vw + 7px)*(-1));
+  left: calc((6.25vw + 7px)*(-1));
+}
+
+.setor-circular-left-bottom {
+  @include setorCircular(25vw, 270deg, $semicirculo: false);
+  bottom: calc((12.5vw + 7px)*(-1));
+  left: calc((12.5vw + 7px)*(-1));
+}
+
+.sc-left-bottom {
+  @include setorCircular(12.5vw, 270deg, $semicirculo: false);
+  bottom: calc((6.25vw + 7px)*(-1));
+  left: calc((6.25vw + 7px)*(-1));
+}
+
+.setor-circular-right-top {
+  @include setorCircular(25vw, 90deg, $semicirculo: false);
+  top: calc((12.5vw + 7px)*(-1));
+  right: calc((12.5vw + 7px)*(-1));
+}
+
+.sc-right-top {
+  @include setorCircular(12.5vw, 90deg, $semicirculo: false);
+  top: calc((6.25vw + 7px)*(-1));
+  right: calc((6.25vw + 7px)*(-1));
+}
+
+.setor-circular-right-bottom {
+  @include setorCircular(25vw, 180deg, $semicirculo: false);
+  bottom: calc((12.5vw + 7px)*(-1));
+  right: calc((12.5vw + 7px)*(-1));
+}
+
+.sc-right-bottom {
+  @include setorCircular(12.5vw, 180deg, $semicirculo: false);
+  bottom: calc((6.25vw + 7px)*(-1));
+  right: calc((6.25vw + 7px)*(-1));
+}
+
+.semicirculo-left {
+  @include setorCircular(25vw, 0deg, $semicirculo: true);
+  left: calc(12.5vw - 9px);
+  top: calc((100vh - (25vw + 14px))/2);
+}
+
+.semicirculo-right {
+  @include setorCircular(25vw, 180deg, $semicirculo: true);
+  right: calc(12.5vw - 9px);
+  top: calc((100vh - (25vw + 14px))/2);
+}
+
+.semicirculo-left-min {
+  @include setorCircular(12.5vw, 0deg, $semicirculo: true);
+  border: none;
+  box-shadow: none;
+  background: white;
+  left: 18.75vw;
+  top: calc((100vh - 13.5vw)/2);
+}
+
+.semicirculo-right-min {
+  @include setorCircular(12.5vw, 180deg, $semicirculo: true);
+  border: none;
+  box-shadow: none;
+  background: white;
+  right: 18.75vw;
+  top: calc((100vh - 13.5vw)/2);
+}

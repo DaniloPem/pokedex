@@ -1,13 +1,18 @@
-.pokemons-conteiner {
+.pokemons-container {
   display: flex;
-  width: 80%;
-  height: auto;
+  width: 800px;
+  height: 100px;
   padding: 5px;
-  border: 1px solid black;
-  margin: 0 10% 0 10%;
   position: absolute;
+  left: calc((100% - 800px)/ 2);
   bottom: 8%;
   gap: 5px;
+  border-radius: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 10px solid white;
+  border-right: 10px solid white;
+  box-shadow: -10px 0 white, 10px 0 white;
 }
 
 .pokemons-div {
@@ -21,6 +26,18 @@
 .button {
   margin: auto auto;
   cursor: pointer;
+}
+
+.button-extended {
+  position: absolute;
+  right: -10%;
+  top: 0;
+  bottom: 0;
+}
+
+.icone-button {
+  width: 24px;
+  height: 24px;
 }
 
 
