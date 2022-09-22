@@ -1,18 +1,25 @@
+@mixin buttonContainer($rotacao) {
+  position: absolute;
+  border-radius: 50%;
+  width: 12.5vw;
+  height: 12.5vw;
+  top: calc((100vh - 13.5vw)/2);
+  transform: rotate($rotacao);
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+  background: rgb(70, 70, 70);
+  z-index: 1;
+}
+
 .pokemons-container {
   display: flex;
-  width: 800px;
-  height: 100px;
+  width: calc(100vw - (25vw - 5px)*2);
+  height: 90vh;
   padding: 5px;
-  position: absolute;
-  left: calc((100% - 800px)/ 2);
-  bottom: 8%;
   gap: 5px;
-  border-radius: 20px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-left: 10px solid white;
-  border-right: 10px solid white;
-  box-shadow: -10px 0 white, 10px 0 white;
+  background: rgb(70, 70, 70);
+  z-index: 1;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .pokemons-div {
@@ -23,16 +30,19 @@
   gap: 3%;
 }
 
+.button-container-left {
+  @include buttonContainer(0deg);
+  left: -6.21vw;
+}
+
+.button-container-right {
+  @include buttonContainer(180deg);
+  right: -6.10vw;
+}
+
 .button {
   margin: auto auto;
   cursor: pointer;
-}
-
-.button-extended {
-  position: absolute;
-  right: -10%;
-  top: 0;
-  bottom: 0;
 }
 
 .icone-button {

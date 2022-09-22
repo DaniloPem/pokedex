@@ -1,22 +1,25 @@
 <div class="pokemons-container">
-  <button
-    mat-fab
-    class="button"
-    color="white"
-    (click)="previousListaPokemons()"
-  >
-    <img class="icone-button" src="../../../assets/icones/back.svg" />
-  </button>
+  <div class="button-container-left">
+    <button
+      mat-fab
+      class="button"
+      color="white"
+      (click)="previousListaPokemons()"
+    >
+      <img class="icone-button" src="../../../assets/icones/back.svg" />
+    </button>
+  </div>
+
   <div class="pokemons-div">
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
       [pokemonUrl]="pokemon.url"
     ></app-retrato-pokemon>
   </div>
-  <button mat-fab class="button" color="white" (click)="nextListaPokemons()">
-    <img class="icone-button" src="../../../assets/icones/forward.svg" />
-  </button>
-  <button mat-fab class="button button-extended" color="white">
-    <img class="icone-button" src="../../../assets/icones/expand.svg" />
-  </button>
+
+  <div class="button-container-right">
+    <button mat-fab class="button" color="white" (click)="nextListaPokemons()">
+      <img class="icone-button" src="../../../assets/icones/back.svg" />
+    </button>
+  </div>
 </div>
