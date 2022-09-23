@@ -11,7 +11,7 @@ export class PokemonsService {
 
   listarPokemons() {
     return this.httpClient.get(`${API_URL}/pokemon/`, {
-      params: { offset: 0, limit: 6 },
+      params: { offset: 0, limit: 20 },
     });
   }
 
