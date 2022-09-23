@@ -8,6 +8,8 @@
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
   background: rgb(70, 70, 70);
   z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
 .pokemons-container {
@@ -44,8 +46,8 @@
 }
 
 .button {
-  margin: auto auto;
   cursor: pointer;
+  margin: 0 1.6vw;
 }
 
 .icone-button {
