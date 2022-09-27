@@ -15,6 +15,16 @@ export class PokemonsService {
     });
   }
 
+  listarTipos() {
+    return this.httpClient.get(`${API_URL}/type/`, {
+      params: { offset: 0, limit: 18 },
+    });
+  }
+
+  listarRegioes() {
+    return this.httpClient.get(`${API_URL}/region/`);
+  }
+
   buscarPorUrl(url: string) {
     return this.httpClient.get(url);
   }
