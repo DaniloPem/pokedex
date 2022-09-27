@@ -23,6 +23,11 @@ export class PokemonsComponent implements OnInit {
     });
   }
 
+  carregarPokemons(pokemonsFiltrados: any) {
+    console.log(pokemonsFiltrados);
+    this.pokemons = pokemonsFiltrados;
+  }
+
   nextListaPokemons() {
     if (this.next !== null) {
       this.pokemonsService.buscarPorUrl(this.next).subscribe((res: any) => {

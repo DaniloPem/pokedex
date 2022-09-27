@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 const API_URL = 'https://pokeapi.co/api/v2';
 
@@ -27,5 +28,18 @@ export class PokemonsService {
 
   buscarPorUrl(url: string) {
     return this.httpClient.get(url);
+  }
+
+  buscarPokemon(valorBuscado?: string) {
+    const nomeId = valorBuscado?.toLowerCase();
+    return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(
+      map((response: any) => {
+        return response.results
+          .filter((pokemon: { name: string; url: string }) =>
+            pokemon.name.includes(nomeId ?? '')
+          )
+          .slice(0, 20);
+      })
+    );
   }
 }
