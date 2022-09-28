@@ -33,8 +33,9 @@
 .pokemons-div {
   display: flex;
   width: 100%;
+  margin: auto;
   height: 85%;
-  margin: auto auto;
+  height: auto;
   gap: 6%;
   flex-wrap: wrap;
   padding: 4.25%;

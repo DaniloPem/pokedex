@@ -34,11 +34,10 @@ export class PokemonsService {
     const nomeId = valorBuscado?.toLowerCase();
     return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(
       map((response: any) => {
-        return response.results
-          .filter((pokemon: { name: string; url: string }) =>
+        return response.results.filter(
+          (pokemon: { name: string; url: string }) =>
             pokemon.name.includes(nomeId ?? '')
-          )
-          .slice(0, 20);
+        );
       })
     );
   }

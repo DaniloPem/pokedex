@@ -8,43 +8,51 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemons.component.scss'],
 })
 export class PokemonsComponent implements OnInit {
+  pokemonsTodos!: Pokemon[];
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
   next: string | null = null;
   previous: string | null = null;
+  numeroPagina: number = 0;
 
   constructor(private pokemonsService: PokemonsService) {}
 
   ngOnInit(): void {
-    this.pokemonsService.listarPokemons().subscribe((res: any) => {
-      this.pokemons = res.results;
-      this.next = res.next;
-      this.previous = res.previous;
+    this.pokemonsService.buscarPokemon().subscribe((res: any) => {
+      this.pokemonsTodos = res;
+      this.pokemons = this.pokemonsTodos.slice(0, 20);
     });
   }
 
   carregarPokemons(pokemonsFiltrados: any) {
-    console.log(pokemonsFiltrados);
-    this.pokemons = pokemonsFiltrados;
+    this.pokemonsTodos = pokemonsFiltrados;
+    this.pokemons = this.pokemonsTodos.slice(0, 20);
+    this.numeroPagina = 0;
   }
 
-  nextListaPokemons() {
-    if (this.next !== null) {
-      this.pokemonsService.buscarPorUrl(this.next).subscribe((res: any) => {
-        this.pokemons = res.results;
-        this.next = res.next;
-        this.previous = res.previous;
-      });
+  proximaPagina() {
+    this.numeroPagina++;
+    const pokemonsProximaPagina = this.pokemonsTodos.slice(
+      this.numeroPagina * 20,
+      (this.numeroPagina + 1) * 20
+    );
+    if (pokemonsProximaPagina.length !== 0) {
+      this.pokemons = pokemonsProximaPagina;
+    } else {
+      this.numeroPagina--;
     }
   }
 
-  previousListaPokemons() {
-    if (this.previous !== null) {
-      this.pokemonsService.buscarPorUrl(this.previous).subscribe((res: any) => {
-        this.pokemons = res.results;
-        this.next = res.next;
-        this.previous = res.previous;
-      });
+  anteriorPagina() {
+    if (this.numeroPagina > 0) {
+      this.numeroPagina--;
+      const pokemonsProximaPagina = this.pokemonsTodos.slice(
+        this.numeroPagina * 20,
+        (this.numeroPagina + 1) * 20
+      );
+      this.pokemons = pokemonsProximaPagina;
+    } else {
+      this.numeroPagina = 0;
     }
   }
 }

@@ -1,16 +1,7 @@
 import { PokemonsService } from './../../pokemons.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {
-  switchMap,
-  filter,
-  debounceTime,
-  distinctUntilChanged,
-} from 'rxjs/operators';
-import { merge, Subscription } from 'rxjs';
-import { outputAst } from '@angular/compiler';
-
-const ESPERA_DIGITACAO = 300;
+import { switchMap, filter, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-barra-pesquisa',
@@ -21,20 +12,14 @@ export class BarraPesquisaComponent implements OnInit {
   optionsTipos = [{ name: 'todos' }];
   optionsRegioes = [{ name: 'todos' }];
   searchControl = new FormControl();
-  // digitacao$ = this.pokemonsService
-  //   .buscarPokemon()
-  //   .pipe(debounceTime(ESPERA_DIGITACAO));
   filtroPokemon$ = this.searchControl.valueChanges.pipe(
     filter((valorDigitado) => {
-      console.log(valorDigitado.length >= 1 || !valorDigitado);
       return valorDigitado.length >= 1 || !valorDigitado;
     }),
-    distinctUntilChanged(),
     switchMap((valorDigitado) =>
       this.pokemonsService.buscarPokemon(valorDigitado)
     )
   );
-  // configuracaoDoFiltro$ = merge(this.digitacao$, this.filtroPokemon$);
   @Output() pokemonsPesquisados = new EventEmitter<any>();
 
   constructor(private pokemonsService: PokemonsService) {}
@@ -52,19 +37,8 @@ export class BarraPesquisaComponent implements OnInit {
   }
 
   inscreverValueChanges() {
-    this.searchControl.valueChanges
-      .pipe(
-        filter((valorDigitado) => {
-          console.log(valorDigitado.length >= 1 || !valorDigitado);
-          return valorDigitado.length >= 1 || !valorDigitado;
-        }),
-        distinctUntilChanged(),
-        switchMap((valorDigitado) =>
-          this.pokemonsService.buscarPokemon(valorDigitado)
-        )
-      )
-      .subscribe((res: any) => {
-        this.pokemonsPesquisados.emit(res);
-      });
+    this.filtroPokemon$.subscribe((res: any) => {
+      this.pokemonsPesquisados.emit(res);
+    });
   }
 }
