@@ -1,6 +1,6 @@
 .retrato-div {
   width: calc((100vw - (25vw - 5px)*2)/8);
-  height: auto;
+  height: calc((100vw - (25vw - 5px)*2)/8);
   background: rgba(92, 92, 92, 0.6);
   border: 2px solid white;
   border-radius: calc(100%/5);
@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   vertical-align: middle;
-  margin-bottom: 35%;
+  margin-bottom: 30%;
 }
 
 .retrato-pokemon {
