@@ -13,6 +13,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatButtonModule,
     MatIconModule,
     MatButtonToggleModule,
+    RouterModule,
   ],
 })
 export class DetalhePokemonModule {}

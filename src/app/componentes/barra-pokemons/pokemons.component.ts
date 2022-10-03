@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PokemonsService } from './../pokemons.service';
 import { Pokemon } from './../pokemons';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,12 @@ export class PokemonsComponent implements OnInit {
   pokemonsTodos!: Pokemon[];
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
-  next: string | null = null;
-  previous: string | null = null;
   numeroPagina: number = 0;
 
-  constructor(private pokemonsService: PokemonsService) {}
+  constructor(
+    private pokemonsService: PokemonsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.pokemonsService.buscarPokemon().subscribe((res: any) => {
@@ -54,5 +56,9 @@ export class PokemonsComponent implements OnInit {
     } else {
       this.numeroPagina = 0;
     }
+  }
+
+  abrirDetalhePokemon(pokemon: Pokemon) {
+    this.router.navigate(['/pokemon', pokemon.name]);
   }
 }

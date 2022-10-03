@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: PokemonsComponent },
-  { path: 'pokemon', component: DetalhePokemonComponent },
+  { path: 'pokemon/:nome', component: DetalhePokemonComponent },
 ];
 
 @NgModule({

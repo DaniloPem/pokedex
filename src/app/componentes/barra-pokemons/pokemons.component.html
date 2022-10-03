@@ -15,6 +15,7 @@
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
       [pokemonUrl]="pokemon.url"
+      (click)="abrirDetalhePokemon(pokemon)"
     ></app-retrato-pokemon>
   </div>
 
