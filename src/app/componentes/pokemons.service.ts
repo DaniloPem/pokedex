@@ -30,6 +30,10 @@ export class PokemonsService {
     return this.httpClient.get(url);
   }
 
+  pegarPokemon(nomePokemon: string) {
+    return this.httpClient.get(`${API_URL}/pokemon/${nomePokemon}`);
+  }
+
   buscarPokemon(valorBuscado?: string) {
     const nomeId = valorBuscado?.toLowerCase();
     return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(

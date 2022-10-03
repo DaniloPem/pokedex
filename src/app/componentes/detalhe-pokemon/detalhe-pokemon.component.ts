@@ -8,7 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./detalhe-pokemon.component.scss'],
 })
 export class DetalhePokemonComponent implements OnInit {
-  nomePokemon!: string | null;
+  nomePokemon!: string;
+  pokemon!: object;
 
   constructor(
     private router: Router,
@@ -17,7 +18,15 @@ export class DetalhePokemonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.nomePokemon = this.activatedRoute.snapshot.paramMap.get('nome');
+    this.nomePokemon = this.activatedRoute.snapshot.paramMap.get(
+      'nome'
+    ) as string;
+    this.pokemonsService
+      .pegarPokemon(this.nomePokemon)
+      .subscribe((res: any) => {
+        this.pokemon = res;
+        console.log(this.pokemon);
+      });
   }
 
   navigate() {
