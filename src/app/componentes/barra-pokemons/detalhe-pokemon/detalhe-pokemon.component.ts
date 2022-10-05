@@ -48,4 +48,13 @@ export class DetalhePokemonComponent implements OnInit {
       this.router.navigate(['/pokemon', nomeProximoPokemon]);
     }
   }
+
+  anteriorPokemon() {
+    const posicaoPokemon = this.pokemonsTodos.indexOf(this.nomePokemon);
+    if (posicaoPokemon > 0) {
+      const anteriorPosicao = posicaoPokemon - 1;
+      const nomeAnteriorPokemon = this.pokemonsTodos[anteriorPosicao];
+      this.router.navigate(['/pokemon', nomeAnteriorPokemon]);
+    }
+  }
 }
