@@ -1,0 +1,51 @@
+import { map } from 'rxjs/operators';
+import { Pokemon } from './../../pokemons';
+import { PokemonsService } from '../../pokemons.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-detalhe-pokemon',
+  templateUrl: './detalhe-pokemon.component.html',
+  styleUrls: ['./detalhe-pokemon.component.scss'],
+})
+export class DetalhePokemonComponent implements OnInit {
+  pokemonsTodos!: string[];
+  nomePokemon!: string;
+  pokemon!: object;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private pokemonsService: PokemonsService
+  ) {}
+
+  ngOnInit(): void {
+    this.pokemonsService.listarPokemons().subscribe((res: any) => {
+      this.pokemonsTodos = res.results.map((pokemon: any) => pokemon.name);
+    });
+    this.activatedRoute.params.subscribe(() => {
+      this.nomePokemon = this.activatedRoute.snapshot.paramMap.get(
+        'nome'
+      ) as string;
+      this.pokemonsService
+        .pegarPokemon(this.nomePokemon)
+        .subscribe((res: any) => {
+          this.pokemon = res;
+        });
+    });
+  }
+
+  voltarListaPokemons() {
+    this.router.navigate(['']);
+  }
+
+  proximoPokemon() {
+    const posicaoPokemon = this.pokemonsTodos.indexOf(this.nomePokemon);
+    if (posicaoPokemon !== this.pokemonsTodos.length - 1) {
+      const proximaPosicao = posicaoPokemon + 1;
+      const nomeProximoPokemon = this.pokemonsTodos[proximaPosicao];
+      this.router.navigate(['/pokemon', nomeProximoPokemon]);
+    }
+  }
+}

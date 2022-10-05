@@ -11,9 +11,7 @@ export class PokemonsService {
   constructor(private httpClient: HttpClient) {}
 
   listarPokemons() {
-    return this.httpClient.get(`${API_URL}/pokemon/`, {
-      params: { offset: 0, limit: 20 },
-    });
+    return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`);
   }
 
   listarTipos() {

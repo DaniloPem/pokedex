@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { DetalhePokemonComponent } from './detalhe-pokemon/detalhe-pokemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BarraPesquisaComponent } from './barra-pesquisa/barra-pesquisa.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +17,7 @@ import { PokemonsComponent } from './pokemons.component';
     RetratoPokemonComponent,
     PokemonsComponent,
     BarraPesquisaComponent,
+    DetalhePokemonComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +27,7 @@ import { PokemonsComponent } from './pokemons.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    RouterModule,
   ],
   exports: [PokemonsComponent],
 })

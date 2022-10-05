@@ -1,4 +1,4 @@
-import { DetalhePokemonComponent } from './../detalhe-pokemon/detalhe-pokemon.component';
+import { DetalhePokemonComponent } from '../barra-pokemons/detalhe-pokemon/detalhe-pokemon.component';
 import { PokemonsComponent } from './../barra-pokemons/pokemons.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

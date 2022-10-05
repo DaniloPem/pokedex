@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.pokemons-container {
+.pokemon-container {
   width: calc(100vw - (25vw - 5px)*2);
   height: 90vh;
   padding: 5px;
@@ -23,23 +23,6 @@
   border-bottom: 2px solid black;
 }
 
-.barra-pesquisa {
-  position: relative;
-  width: 80%;
-  height: 5vh;
-  margin: 2vh auto;
-}
-
-.pokemons-div {
-  display: flex;
-  width: 100%;
-  margin: auto;
-  height: 85%;
-  height: auto;
-  gap: 6%;
-  flex-wrap: wrap;
-  padding: 4.25%;
-}
 
 .button-container-left {
   @include buttonContainer(0deg);
@@ -61,4 +44,8 @@
   height: 24px;
 }
 
-
+.botaoVoltar {
+  position: absolute;
+  right: 0;
+  top: -0;
+}

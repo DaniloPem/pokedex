@@ -1,14 +1,16 @@
-<div class="pokemons-container">
+<div class="pokemon-container">
   <div class="button-container-left">
     <button mat-fab class="button" color="white">
       <img class="icone-button" src="../../../assets/icones/back.svg" />
     </button>
   </div>
 
-  <button (click)="navigate()">x</button>
+  <button class="botaoVoltar" (click)="voltarListaPokemons()">
+    <img src="../../../assets/icones/close.svg" />
+  </button>
 
   <div class="button-container-right">
-    <button mat-fab class="button" color="white">
+    <button mat-fab class="button" color="white" (click)="proximoPokemon()">
       <img class="icone-button" src="../../../assets/icones/back.svg" />
     </button>
   </div>

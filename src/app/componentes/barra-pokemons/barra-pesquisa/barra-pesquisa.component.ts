@@ -1,7 +1,7 @@
 import { PokemonsService } from './../../pokemons.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { switchMap, filter, distinctUntilChanged } from 'rxjs/operators';
+import { switchMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-barra-pesquisa',
