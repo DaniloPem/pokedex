@@ -12,7 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DetalhePokemonComponent implements OnInit {
   pokemonsTodos!: string[];
   nomePokemon!: string;
-  pokemon!: object;
+  imagemPokemon!: string;
+  pokemon!: Object;
 
   constructor(
     private router: Router,
@@ -32,6 +33,8 @@ export class DetalhePokemonComponent implements OnInit {
         .pegarPokemon(this.nomePokemon)
         .subscribe((res: any) => {
           this.pokemon = res;
+          this.imagemPokemon =
+            res.sprites.other['official-artwork'].front_default;
         });
     });
   }
