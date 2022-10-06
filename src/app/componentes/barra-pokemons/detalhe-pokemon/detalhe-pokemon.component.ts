@@ -1,3 +1,4 @@
+import { SalvarDadosService } from './../../salvar-dados.service';
 import { map } from 'rxjs/operators';
 import { Pokemon } from './../../pokemons';
 import { PokemonsService } from '../../pokemons.service';
@@ -19,7 +20,8 @@ export class DetalhePokemonComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private pokemonsService: PokemonsService
+    private pokemonsService: PokemonsService,
+    private salvarDadosService: SalvarDadosService
   ) {}
 
   ngOnInit(): void {

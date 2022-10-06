@@ -1,3 +1,4 @@
+import { SalvarDadosService } from './../salvar-dados.service';
 import { Router } from '@angular/router';
 import { PokemonsService } from './../pokemons.service';
 import { Pokemon } from './../pokemons';
@@ -12,17 +13,22 @@ export class PokemonsComponent implements OnInit {
   pokemonsTodos!: Pokemon[];
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
-  numeroPagina: number = 0;
+  numeroPagina!: number;
 
   constructor(
     private pokemonsService: PokemonsService,
+    private salvarDadosService: SalvarDadosService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.numeroPagina = this.salvarDadosService.getPaginaPokedex() ?? 0;
     this.pokemonsService.buscarPokemon().subscribe((res: any) => {
       this.pokemonsTodos = res;
-      this.pokemons = this.pokemonsTodos.slice(0, 20);
+      this.pokemons = this.pokemonsTodos.slice(
+        this.numeroPagina * 20,
+        (this.numeroPagina + 1) * 20
+      );
     });
   }
 
@@ -43,6 +49,7 @@ export class PokemonsComponent implements OnInit {
     } else {
       this.numeroPagina--;
     }
+    this.salvarDadosService.setPaginaPokedex(this.numeroPagina);
   }
 
   anteriorPagina() {
@@ -56,9 +63,11 @@ export class PokemonsComponent implements OnInit {
     } else {
       this.numeroPagina = 0;
     }
+    this.salvarDadosService.setPaginaPokedex(this.numeroPagina);
   }
 
   abrirDetalhePokemon(pokemon: Pokemon) {
     this.router.navigate(['/pokemon', pokemon.name]);
+    this.salvarDadosService.setPaginaPokedex(this.numeroPagina);
   }
 }
