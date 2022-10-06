@@ -9,17 +9,88 @@ $width-imagem: calc($width-container*0.5);
   top: calc((100vh - 13.5vw)/2);
   transform: rotate($rotacao);
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
-  background: rgb(70, 70, 70);
+  // background: rgb(101, 211, 138);
   z-index: 1;
   display: flex;
   align-items: center;
+}
+
+.grass {
+  background: rgb(101, 211, 138);
+}
+
+.fire {
+  background: rgb(255, 115, 90);
+}
+
+.water {
+  background: rgb(118, 182, 255);
+}
+
+.ice {
+  background: rgb(109, 223, 252);
+}
+
+.bug {
+  background: rgb(193, 255, 100);
+}
+
+.normal {
+  background: rgb(167, 167, 167);
+}
+
+.poison {
+  background: rgb(177, 111, 177);
+}
+
+.electric {
+  background: rgb(255, 255, 114);
+}
+
+.ground {
+  background: rgb(180, 94, 94);
+}
+
+.fairy {
+  background: rgb(226, 152, 165);
+}
+
+.fighting {
+  background: rgb(255, 71, 71);
+}
+
+.dragon {
+  background: rgb(114, 114, 255);
+}
+
+.flying {
+  background: rgb(149, 149, 255);
+}
+
+.rock {
+  background: rgb(182, 132, 85);
+}
+
+.ghost {
+  background: rgb(153, 75, 255);
+}
+
+.steel{
+  background: rgb(94, 148, 145);
+}
+
+.psychic {
+  background: rgb(255, 82, 120);
+}
+
+.dark {
+  background: rgb(90, 91, 114);
 }
 
 .pokemon-container {
   width: $width-container;
   height: 90vh;
   gap: 5px;
-  background: rgb(70, 70, 70);
   z-index: 1;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -33,7 +104,7 @@ $width-imagem: calc($width-container*0.5);
 
 .button-container-right {
   @include buttonContainer(180deg);
-  right: -6.10vw;
+  right: -6.20vw;
 }
 
 .button {

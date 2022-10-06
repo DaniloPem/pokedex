@@ -14,6 +14,7 @@ export class DetalhePokemonComponent implements OnInit {
   nomePokemon!: string;
   imagemPokemon!: string;
   pokemon!: Object;
+  tiposPokemon!: string[];
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class DetalhePokemonComponent implements OnInit {
           this.pokemon = res;
           this.imagemPokemon =
             res.sprites.other['official-artwork'].front_default;
+          this.tiposPokemon = res.types.map((obj: any) => obj.type.name);
         });
     });
   }

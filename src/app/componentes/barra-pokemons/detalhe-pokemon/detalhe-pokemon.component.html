@@ -1,5 +1,5 @@
-<div class="pokemon-container">
-  <div class="button-container-left">
+<div class="pokemon-container" [ngClass]="tiposPokemon[0]">
+  <div class="button-container-left" [ngClass]="tiposPokemon[0]">
     <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
       <img class="icone-button" src="../../../assets/icones/back.svg" />
     </button>
@@ -13,7 +13,7 @@
     <img class="imagemPokemon" [src]="imagemPokemon" />
   </div>
 
-  <div class="button-container-right">
+  <div class="button-container-right" [ngClass]="tiposPokemon[0]">
     <button mat-fab class="button" color="white" (click)="proximoPokemon()">
       <img class="icone-button" src="../../../assets/icones/back.svg" />
     </button>
