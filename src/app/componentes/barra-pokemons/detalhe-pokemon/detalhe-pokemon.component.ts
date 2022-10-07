@@ -1,6 +1,4 @@
 import { SalvarDadosService } from './../../salvar-dados.service';
-import { map } from 'rxjs/operators';
-import { Pokemon } from './../../pokemons';
 import { PokemonsService } from '../../pokemons.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

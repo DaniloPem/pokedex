@@ -14,6 +14,7 @@ export class PokemonsComponent implements OnInit {
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
   numeroPagina!: number;
+  filtro!: string;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -32,9 +33,14 @@ export class PokemonsComponent implements OnInit {
     });
   }
 
-  carregarPokemons(pokemonsFiltrados: any) {
-    this.pokemonsTodos = pokemonsFiltrados;
-    this.pokemons = this.pokemonsTodos.slice(0, 20);
+  carregarPokemons(filtro: string) {
+    this.filtro = filtro;
+    this.pokemonsService
+      .buscarPokemon(this.filtro)
+      .subscribe((pokemonsFiltrados: Pokemon[]) => {
+        this.pokemonsTodos = pokemonsFiltrados;
+        this.pokemons = this.pokemonsTodos.slice(0, 20);
+      });
     this.numeroPagina = 0;
   }
 

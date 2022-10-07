@@ -15,10 +15,7 @@ export class BarraPesquisaComponent implements OnInit {
   filtroPokemon$ = this.searchControl.valueChanges.pipe(
     filter((valorDigitado) => {
       return valorDigitado.length >= 1 || !valorDigitado;
-    }),
-    switchMap((valorDigitado) =>
-      this.pokemonsService.buscarPokemon(valorDigitado)
-    )
+    })
   );
   @Output() pokemonsPesquisados = new EventEmitter<any>();
 
