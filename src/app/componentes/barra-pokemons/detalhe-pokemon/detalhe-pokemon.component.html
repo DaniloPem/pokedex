@@ -1,4 +1,4 @@
-<div class="pokemon-container" [ngClass]="tiposPokemon[0]">
+<div *ngIf="!!pokemon" class="pokemon-container" [ngClass]="tiposPokemon[0]">
   <div class="button-container-left" [ngClass]="tiposPokemon[0]">
     <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
       <img class="icone-button" src="../../../assets/icones/back.svg" />

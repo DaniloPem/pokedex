@@ -2,6 +2,7 @@
   <div class="barra-pesquisa">
     <app-barra-pesquisa
       (pokemonsPesquisados)="carregarPokemons($event)"
+      [filtroInicial]="filtro"
     ></app-barra-pesquisa>
   </div>
 

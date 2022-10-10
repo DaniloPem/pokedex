@@ -1,7 +1,7 @@
 import { PokemonsService } from './../../pokemons.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { switchMap, filter } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-barra-pesquisa',
@@ -11,17 +11,21 @@ import { switchMap, filter } from 'rxjs/operators';
 export class BarraPesquisaComponent implements OnInit {
   optionsTipos = [{ name: 'todos' }];
   optionsRegioes = [{ name: 'todos' }];
+  @Input() filtroInicial!: string;
   searchControl = new FormControl();
   filtroPokemon$ = this.searchControl.valueChanges.pipe(
     filter((valorDigitado) => {
-      return valorDigitado.length >= 1 || !valorDigitado;
+      return valorDigitado!.length >= 1 || !valorDigitado;
     })
   );
   @Output() pokemonsPesquisados = new EventEmitter<any>();
 
-  constructor(private pokemonsService: PokemonsService) {}
+  constructor(private pokemonsService: PokemonsService) {
+    console.log(this.filtroInicial);
+  }
 
   ngOnInit(): void {
+    this.searchControl.setValue(this.filtroInicial, { emitEvent: false });
     this.pokemonsService.listarTipos().subscribe((res: any) => {
       this.optionsTipos = this.optionsTipos.concat(res.results);
     });

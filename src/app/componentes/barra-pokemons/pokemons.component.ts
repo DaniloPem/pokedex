@@ -23,14 +23,9 @@ export class PokemonsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.filtro = this.salvarDadosService.getFiltroPesquisa() ?? '';
     this.numeroPagina = this.salvarDadosService.getPaginaPokedex() ?? 0;
-    this.pokemonsService.buscarPokemon().subscribe((res: any) => {
-      this.pokemonsTodos = res;
-      this.pokemons = this.pokemonsTodos.slice(
-        this.numeroPagina * 20,
-        (this.numeroPagina + 1) * 20
-      );
-    });
+    this.carregarPokemons(this.filtro);
   }
 
   carregarPokemons(filtro: string) {
@@ -39,9 +34,13 @@ export class PokemonsComponent implements OnInit {
       .buscarPokemon(this.filtro)
       .subscribe((pokemonsFiltrados: Pokemon[]) => {
         this.pokemonsTodos = pokemonsFiltrados;
-        this.pokemons = this.pokemonsTodos.slice(0, 20);
+        this.pokemons = this.pokemonsTodos.slice(
+          this.numeroPagina * 20,
+          (this.numeroPagina + 1) * 20
+        );
       });
     this.numeroPagina = 0;
+    this.salvarDadosService.setFiltroPesquisa(this.filtro);
   }
 
   proximaPagina() {
@@ -75,5 +74,7 @@ export class PokemonsComponent implements OnInit {
   abrirDetalhePokemon(pokemon: Pokemon) {
     this.router.navigate(['/pokemon', pokemon.name]);
     this.salvarDadosService.setPaginaPokedex(this.numeroPagina);
+    this.salvarDadosService.setFiltroPesquisa(this.filtro);
+    console.log(this.filtro);
   }
 }

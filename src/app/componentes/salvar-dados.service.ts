@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SalvarDadosService {
-  private pagina: number | undefined;
-  private filtro: string | undefined;
+  private pagina!: number;
+  private filtro!: string;
 
   constructor() {}
 
-  getPaginaPokedex(): number | undefined {
+  getPaginaPokedex(): number {
     return this.pagina;
   }
 
-  getFiltroPesquisa() {
+  getFiltroPesquisa(): string {
     return this.filtro;
   }
 
