@@ -12,7 +12,7 @@ export class DetalhePokemonComponent implements OnInit {
   pokemonsTodos!: string[];
   nomePokemon!: string;
   imagemPokemon!: string;
-  pokemon!: Object;
+  pokemon!: any;
   tiposPokemon!: string[];
 
   constructor(

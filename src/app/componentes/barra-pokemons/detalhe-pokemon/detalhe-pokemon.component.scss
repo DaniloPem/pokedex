@@ -88,12 +88,14 @@ $width-imagem: calc($width-container*0.5);
 }
 
 .pokemon-container {
+  display: flex;
   width: $width-container;
   height: 90vh;
   gap: 5px;
   z-index: 1;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+  justify-content: space-between;
 }
 
 

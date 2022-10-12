@@ -1,4 +1,12 @@
 <div *ngIf="!!pokemon" class="pokemon-container" [ngClass]="tiposPokemon[0]">
+  <div class="detalhe-pokemon">
+    <p>{{ pokemon.name | titlecase }}</p>
+  </div>
+
+  <div class="imagemPokemon-container">
+    <img class="imagemPokemon" [src]="imagemPokemon" />
+  </div>
+
   <div class="button-container-left" [ngClass]="tiposPokemon[0]">
     <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
       <img class="icone-button" src="../../../assets/icones/back.svg" />
@@ -8,10 +16,6 @@
   <button class="botaoVoltar" (click)="voltarListaPokemons()">
     <img src="../../../assets/icones/close.svg" />
   </button>
-
-  <div class="imagemPokemon-container">
-    <img class="imagemPokemon" [src]="imagemPokemon" />
-  </div>
 
   <div class="button-container-right" [ngClass]="tiposPokemon[0]">
     <button mat-fab class="button" color="white" (click)="proximoPokemon()">
