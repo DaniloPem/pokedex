@@ -1,4 +1,3 @@
-import { SalvarDadosService } from './../../salvar-dados.service';
 import { PokemonsService } from '../../pokemons.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,8 +17,7 @@ export class DetalhePokemonComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private pokemonsService: PokemonsService,
-    private salvarDadosService: SalvarDadosService
+    private pokemonsService: PokemonsService
   ) {}
 
   ngOnInit(): void {
@@ -61,5 +59,9 @@ export class DetalhePokemonComponent implements OnInit {
       const nomeAnteriorPokemon = this.pokemonsTodos[anteriorPosicao];
       this.router.navigate(['/pokemon', nomeAnteriorPokemon]);
     }
+  }
+
+  getDisplayId(id: number): string {
+    return '#' + `00${id}`.slice(-3);
   }
 }

@@ -1,6 +1,7 @@
 <div *ngIf="!!pokemon" class="pokemon-container" [ngClass]="tiposPokemon[0]">
   <div class="detalhe-pokemon">
     <p>{{ pokemon.name | titlecase }}</p>
+    <p>{{ getDisplayId(pokemon.id) }}</p>
   </div>
 
   <div class="imagemPokemon-container">
