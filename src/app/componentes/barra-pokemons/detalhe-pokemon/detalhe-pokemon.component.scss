@@ -95,7 +95,6 @@ $width-imagem: calc($width-container*0.5);
   z-index: 1;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
-  justify-content: space-between;
 }
 
 
@@ -125,11 +124,29 @@ $width-imagem: calc($width-container*0.5);
   top: -0;
 }
 
+.detalhe-pokemon {
+  width: 65%;
+  height: 100%;
+  position: relative;
+}
+
+.nomeId {
+  display: flex;
+}
+
+.nome {
+  font-weight: bold;
+  font-size: 2.5vw;
+}
+
+.id {
+  font-size: 1.5vw;
+}
+
 .imagemPokemon-container {
   width: 35%;
   height: 100%;
   background: white;
-  float: right;
 }
 
 .imagemPokemon {
