@@ -4,6 +4,28 @@
       <h1 class="nome">{{ pokemon.name | titlecase }}</h1>
       <p class="id">{{ getDisplayId(pokemon.id) }}</p>
     </div>
+
+    <ul class="tipos">
+      <li class="lista tipo1">
+        <span>{{ tiposPokemon[0] | titlecase }}</span>
+      </li>
+
+      <li *ngIf="!!tiposPokemon[1]" class="lista tipo2">
+        <span>{{ tiposPokemon[1] | titlecase }}</span>
+      </li>
+    </ul>
+
+    <ul class="detalhesFisicos">
+      <li class="lista">
+        <span>Height</span><br />
+        <strong>{{ getAltura(pokemon.height) }}</strong>
+      </li>
+
+      <li class="lista">
+        <span>Weight</span><br />
+        <strong>{{ getPeso(pokemon.weight) }}</strong>
+      </li>
+    </ul>
   </div>
 
   <div class="imagemPokemon-container">

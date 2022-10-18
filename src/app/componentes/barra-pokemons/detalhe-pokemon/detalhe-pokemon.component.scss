@@ -9,10 +9,13 @@ $width-imagem: calc($width-container*0.5);
   top: calc((100vh - 13.5vw)/2);
   transform: rotate($rotacao);
   clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
-  // background: rgb(101, 211, 138);
   z-index: 1;
   display: flex;
   align-items: center;
+}
+
+.tipos {
+  display: flex;
 }
 
 .grass {
@@ -141,6 +144,15 @@ $width-imagem: calc($width-container*0.5);
 
 .id {
   font-size: 1.5vw;
+}
+
+.detalhesFisicos {
+  display: flex;
+  align-items: flex-start;
+}
+
+.lista {
+  list-style: none;
 }
 
 .imagemPokemon-container {

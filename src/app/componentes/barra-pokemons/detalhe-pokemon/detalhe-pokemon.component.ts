@@ -64,4 +64,14 @@ export class DetalhePokemonComponent implements OnInit {
   getDisplayId(id: number): string {
     return '#' + `00${id}`.slice(-3);
   }
+
+  getPeso(peso: number) {
+    const pesoConvertido = peso / 10;
+    return `${pesoConvertido} kg`;
+  }
+
+  getAltura(altura: number) {
+    const alturaConvertida = altura / 10;
+    return `${alturaConvertida} m`;
+  }
 }

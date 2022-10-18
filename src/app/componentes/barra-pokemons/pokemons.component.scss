@@ -34,11 +34,14 @@
   display: flex;
   width: 100%;
   margin: auto;
-  height: 85%;
   height: auto;
   gap: 6%;
   flex-wrap: wrap;
   padding: 4.25%;
+}
+
+.app-retrato {
+  margin-bottom: 3%;
 }
 
 .button-container-left {
