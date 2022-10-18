@@ -44,7 +44,7 @@ export class PokemonsService {
     );
   }
 
-  // buscarTipo(tipoPokemon?: string) {
-  //   return this.httpClient.get(`${API_URL}/type/${tipoPokemon}`);
-  // }
+  buscarTipo(tipoPokemon?: string) {
+    return this.httpClient.get(`${API_URL}/type/${tipoPokemon}`);
+  }
 }

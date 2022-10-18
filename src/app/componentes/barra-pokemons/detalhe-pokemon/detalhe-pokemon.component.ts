@@ -9,10 +9,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DetalhePokemonComponent implements OnInit {
   pokemonsTodos!: string[];
+  pokemon!: any;
   nomePokemon!: string;
   imagemPokemon!: string;
-  pokemon!: any;
   tiposPokemon!: string[];
+  fraquezasPokemon!: string[];
+  fortalecasPokemon!: string[];
+  imunidadesPokemon!: string[];
 
   constructor(
     private router: Router,
@@ -36,6 +39,58 @@ export class DetalhePokemonComponent implements OnInit {
             res.sprites.other['official-artwork'].front_default;
           this.tiposPokemon = res.types.map((obj: any) => obj.type.name);
         });
+    });
+  }
+
+  pegarDebilidadesFortalecas() {
+    if (this.tiposPokemon.length === 1) {
+      this.buscarFraquezasEFortalecas(
+        this.tiposPokemon[0],
+        this.fraquezasPokemon,
+        this.fortalecasPokemon,
+        this.imunidadesPokemon
+      );
+    }
+    if (this.tiposPokemon.length > 1) {
+      const fraquezasTipo1: string[] = [];
+      const fraquezasTipo2: string[] = [];
+      const fortalecasTipo1: string[] = [];
+      const fortalecasTipo2: string[] = [];
+      const imunidadesTipo1: string[] = [];
+      const imunidadesTipo2: string[] = [];
+      this.buscarFraquezasEFortalecas(
+        this.tiposPokemon[0],
+        fraquezasTipo1,
+        fortalecasTipo1,
+        imunidadesTipo1
+      );
+      this.buscarFraquezasEFortalecas(
+        this.tiposPokemon[1],
+        fraquezasTipo2,
+        fortalecasTipo2,
+        imunidadesTipo2
+      );
+      // método para pegar as debilidades e fortalecas de um pokemon com dois tipos
+    }
+  }
+
+  buscarFraquezasEFortalecas(
+    tipo: string,
+    fraquezas: string[],
+    fortalecas: string[],
+    imunidades: string[]
+  ) {
+    this.pokemonsService.buscarTipo(tipo).subscribe((tipo: any) => {
+      fraquezas = tipo.damage_relations.double_damage_from.map(
+        (obj: any) => obj.name
+      );
+      fortalecas = tipo.damage_relations.half_damage_from.map(
+        (obj: any) => obj.name
+      );
+      imunidades = tipo.damage_relations.no_damage_from.map(
+        (obj: any) => obj.name
+      );
+      fortalecas.push(...imunidades);
     });
   }
 
