@@ -1,6 +1,8 @@
 import { PokemonsService } from '../../pokemons.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-detalhe-pokemon',
@@ -14,7 +16,7 @@ export class DetalhePokemonComponent implements OnInit {
   imagemPokemon!: string;
   tiposPokemon!: string[];
   fraquezasPokemon!: string[];
-  fortalecasPokemon!: string[];
+  forcasPokemon!: string[];
   imunidadesPokemon!: string[];
 
   constructor(
@@ -38,60 +40,79 @@ export class DetalhePokemonComponent implements OnInit {
           this.imagemPokemon =
             res.sprites.other['official-artwork'].front_default;
           this.tiposPokemon = res.types.map((obj: any) => obj.type.name);
+          this.pegarDebilidadesFortalecas(this.tiposPokemon);
+          console.log(this.tiposPokemon.length);
         });
     });
   }
 
-  pegarDebilidadesFortalecas() {
-    if (this.tiposPokemon.length === 1) {
-      this.buscarFraquezasEFortalecas(
-        this.tiposPokemon[0],
-        this.fraquezasPokemon,
-        this.fortalecasPokemon,
-        this.imunidadesPokemon
-      );
+  pegarDebilidadesFortalecas(tiposPokemon: string[]) {
+    if (tiposPokemon.length === 1) {
+      // this.buscarFraquezasEFortalecas(
+      //   tiposPokemon[0],
+      //   this.fraquezasPokemon,
+      //   this.forcasPokemon,
+      //   this.imunidadesPokemon
+      // );
     }
-    if (this.tiposPokemon.length > 1) {
-      const fraquezasTipo1: string[] = [];
-      const fraquezasTipo2: string[] = [];
-      const fortalecasTipo1: string[] = [];
-      const fortalecasTipo2: string[] = [];
-      const imunidadesTipo1: string[] = [];
-      const imunidadesTipo2: string[] = [];
-      this.buscarFraquezasEFortalecas(
-        this.tiposPokemon[0],
-        fraquezasTipo1,
-        fortalecasTipo1,
-        imunidadesTipo1
-      );
-      this.buscarFraquezasEFortalecas(
-        this.tiposPokemon[1],
-        fraquezasTipo2,
-        fortalecasTipo2,
-        imunidadesTipo2
-      );
-      // método para pegar as debilidades e fortalecas de um pokemon com dois tipos
+    if (tiposPokemon.length === 2) {
+      let fraquezasTipo1: string[] = [];
+      let fraquezasTipo2: string[] = [];
+      let forcasTipo1: string[] = [];
+      let forcasTipo2: string[] = [];
+      let imunidadesTipo1: string[] = [];
+      let imunidadesTipo2: string[] = [];
+      // this.buscarFraquezasEFortalecas(
+      //   this.tiposPokemon[0],
+      //   fraquezasTipo1,
+      //   forcasTipo1,
+      //   imunidadesTipo1
+      // );
+      // this.buscarFraquezasEFortalecas(
+      //   this.tiposPokemon[1],
+      //   fraquezasTipo2,
+      //   forcasTipo2,
+      //   imunidadesTipo2
+      // );
+      //fraquezas
+      forkJoin({
+        tipo1: this.pokemonsService.buscarTipo(this.tiposPokemon[0]),
+        tipo2: this.pokemonsService.buscarTipo(this.tiposPokemon[1]),
+      }).subscribe(({ tipo1, tipo2 }) => {
+        const ffiTipo1 = this.buscarFraquezasEFortalecas(tipo1);
+        const ffiTipo2 = this.buscarFraquezasEFortalecas(tipo2);
+        console.log(ffiTipo1, ffiTipo2);
+        // fraquezasTipo1.push(...fraquezasTipo2);
+        const setFraquezasTotais = new Set(
+          ffiTipo1.fraquezas.concat(ffiTipo2.fraquezas)
+        );
+        const fraquezasTotais = [...setFraquezasTotais];
+        const fraquezasEForcas = [
+          ...fraquezasTotais,
+          ...ffiTipo1.forcas,
+          ...ffiTipo2.forcas,
+        ];
+        const repetidos = fraquezasEForcas.filter(
+          (valor, index) => fraquezasEForcas.indexOf(valor) !== index
+        );
+        this.fraquezasPokemon = fraquezasEForcas.filter((fraquezaOuForca) => {
+          return !repetidos.includes(fraquezaOuForca);
+        });
+      });
     }
   }
 
-  buscarFraquezasEFortalecas(
-    tipo: string,
-    fraquezas: string[],
-    fortalecas: string[],
-    imunidades: string[]
-  ) {
-    this.pokemonsService.buscarTipo(tipo).subscribe((tipo: any) => {
-      fraquezas = tipo.damage_relations.double_damage_from.map(
-        (obj: any) => obj.name
-      );
-      fortalecas = tipo.damage_relations.half_damage_from.map(
-        (obj: any) => obj.name
-      );
-      imunidades = tipo.damage_relations.no_damage_from.map(
-        (obj: any) => obj.name
-      );
-      fortalecas.push(...imunidades);
-    });
+  buscarFraquezasEFortalecas(res: any) {
+    const fraquezas = res.damage_relations.double_damage_from.map(
+      (obj: any) => obj.name
+    );
+    const imunidades = res.damage_relations.no_damage_from.map(
+      (obj: any) => obj.name
+    );
+    const forcas = res.damage_relations.half_damage_from
+      .map((obj: any) => obj.name)
+      .concat(imunidades);
+    return { fraquezas, forcas, imunidades };
   }
 
   voltarListaPokemons() {

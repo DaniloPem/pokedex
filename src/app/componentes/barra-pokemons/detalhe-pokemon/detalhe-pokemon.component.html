@@ -26,6 +26,18 @@
         <strong>{{ getPeso(pokemon.weight) }}</strong>
       </li>
     </ul>
+
+    <ul class="forcasEFraquezas">
+      <li class="lista">
+        <span>Strengths</span>
+        <span *ngFor="let forca of forcasPokemon">{{ forca }}</span>
+      </li>
+
+      <li class="lista">
+        <span>Weaknesses</span><br />
+        <span *ngFor="let fraqueza of fraquezasPokemon">{{ fraqueza }}</span>
+      </li>
+    </ul>
   </div>
 
   <div class="imagemPokemon-container">
