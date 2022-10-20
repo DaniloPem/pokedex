@@ -51,54 +51,43 @@ export class DetalhePokemonComponent implements OnInit {
       forkJoin({
         tipo1: this.pokemonsService.buscarTipo(this.tiposPokemon[0]),
       }).subscribe(({ tipo1 }) => {
-        const fftipo1 = this.buscarFraquezasEFortalecas(tipo1);
-        this.forcasPokemon = fftipo1.forcas;
-        this.fraquezasPokemon = fftipo1.fraquezas;
+        const forcasEFrquezas = this.buscarFraquezasEFortalecas(tipo1);
+        this.forcasPokemon = forcasEFrquezas.forcas;
+        this.fraquezasPokemon = forcasEFrquezas.fraquezas;
       });
     }
     if (tiposPokemon.length === 2) {
-      // let fraquezasTipo1: string[] = [];
-      // let fraquezasTipo2: string[] = [];
-      // let forcasTipo1: string[] = [];
-      // let forcasTipo2: string[] = [];
-      // let imunidadesTipo1: string[] = [];
-      // let imunidadesTipo2: string[] = [];
-      // this.buscarFraquezasEFortalecas(
-      //   this.tiposPokemon[0],
-      //   fraquezasTipo1,
-      //   forcasTipo1,
-      //   imunidadesTipo1
-      // );
-      // this.buscarFraquezasEFortalecas(
-      //   this.tiposPokemon[1],
-      //   fraquezasTipo2,
-      //   forcasTipo2,
-      //   imunidadesTipo2
-      // );
-      //fraquezas
       forkJoin({
         tipo1: this.pokemonsService.buscarTipo(this.tiposPokemon[0]),
         tipo2: this.pokemonsService.buscarTipo(this.tiposPokemon[1]),
       }).subscribe(({ tipo1, tipo2 }) => {
-        const ffiTipo1 = this.buscarFraquezasEFortalecas(tipo1);
-        const ffiTipo2 = this.buscarFraquezasEFortalecas(tipo2);
-        console.log(ffiTipo1, ffiTipo2);
+        const forcasEFraquezasTipo1 = this.buscarFraquezasEFortalecas(tipo1);
+        const forcasEFraquezasTipo2 = this.buscarFraquezasEFortalecas(tipo2);
         const setFraquezasTotais = new Set(
-          ffiTipo1.fraquezas.concat(ffiTipo2.fraquezas)
+          forcasEFraquezasTipo1.fraquezas.concat(
+            forcasEFraquezasTipo2.fraquezas
+          )
+        );
+        const setForcasTotais = new Set(
+          forcasEFraquezasTipo1.forcas.concat(forcasEFraquezasTipo2.forcas)
         );
         const fraquezasTotais = [...setFraquezasTotais];
-        const setForcasTotais = new Set(
-          ffiTipo1.forcas.concat(ffiTipo2.forcas)
-        );
         const forcasTotais = [...setForcasTotais];
-        const fraquezasEForcas = [
+        const fraquezasEForcasTotais = [
           ...fraquezasTotais,
-          ...ffiTipo1.forcas,
-          ...ffiTipo2.forcas,
+          ...forcasEFraquezasTipo1.forcas,
+          ...forcasEFraquezasTipo2.forcas,
         ];
-        this.fraquezasPokemon = fraquezasEForcas.filter((fraquezaOuForca) => {
-          return !forcasTotais.includes(fraquezaOuForca);
+        this.fraquezasPokemon = fraquezasEForcasTotais.filter((fraqueza) => {
+          return !forcasTotais.includes(fraqueza);
         });
+        this.forcasPokemon = [
+          ...new Set(
+            fraquezasEForcasTotais.filter((forca) => {
+              return !fraquezasTotais.includes(forca);
+            })
+          ),
+        ];
       });
     }
   }
