@@ -48,20 +48,21 @@ export class DetalhePokemonComponent implements OnInit {
 
   pegarDebilidadesFortalecas(tiposPokemon: string[]) {
     if (tiposPokemon.length === 1) {
-      // this.buscarFraquezasEFortalecas(
-      //   tiposPokemon[0],
-      //   this.fraquezasPokemon,
-      //   this.forcasPokemon,
-      //   this.imunidadesPokemon
-      // );
+      forkJoin({
+        tipo1: this.pokemonsService.buscarTipo(this.tiposPokemon[0]),
+      }).subscribe(({ tipo1 }) => {
+        const fftipo1 = this.buscarFraquezasEFortalecas(tipo1);
+        this.forcasPokemon = fftipo1.forcas;
+        this.fraquezasPokemon = fftipo1.fraquezas;
+      });
     }
     if (tiposPokemon.length === 2) {
-      let fraquezasTipo1: string[] = [];
-      let fraquezasTipo2: string[] = [];
-      let forcasTipo1: string[] = [];
-      let forcasTipo2: string[] = [];
-      let imunidadesTipo1: string[] = [];
-      let imunidadesTipo2: string[] = [];
+      // let fraquezasTipo1: string[] = [];
+      // let fraquezasTipo2: string[] = [];
+      // let forcasTipo1: string[] = [];
+      // let forcasTipo2: string[] = [];
+      // let imunidadesTipo1: string[] = [];
+      // let imunidadesTipo2: string[] = [];
       // this.buscarFraquezasEFortalecas(
       //   this.tiposPokemon[0],
       //   fraquezasTipo1,
@@ -82,21 +83,21 @@ export class DetalhePokemonComponent implements OnInit {
         const ffiTipo1 = this.buscarFraquezasEFortalecas(tipo1);
         const ffiTipo2 = this.buscarFraquezasEFortalecas(tipo2);
         console.log(ffiTipo1, ffiTipo2);
-        // fraquezasTipo1.push(...fraquezasTipo2);
         const setFraquezasTotais = new Set(
           ffiTipo1.fraquezas.concat(ffiTipo2.fraquezas)
         );
         const fraquezasTotais = [...setFraquezasTotais];
+        const setForcasTotais = new Set(
+          ffiTipo1.forcas.concat(ffiTipo2.forcas)
+        );
+        const forcasTotais = [...setForcasTotais];
         const fraquezasEForcas = [
           ...fraquezasTotais,
           ...ffiTipo1.forcas,
           ...ffiTipo2.forcas,
         ];
-        const repetidos = fraquezasEForcas.filter(
-          (valor, index) => fraquezasEForcas.indexOf(valor) !== index
-        );
         this.fraquezasPokemon = fraquezasEForcas.filter((fraquezaOuForca) => {
-          return !repetidos.includes(fraquezaOuForca);
+          return !forcasTotais.includes(fraquezaOuForca);
         });
       });
     }
