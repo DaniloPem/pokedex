@@ -1,62 +1,108 @@
-<div *ngIf="!!pokemon" class="pokemon-container" [ngClass]="tiposPokemon[0]">
+<div
+  *ngIf="!!pokemon"
+  class="pokemon-container"
+  [ngClass]="'background-' + tiposPokemon[0]"
+>
   <div class="detalhe-pokemon">
     <div class="nomeId">
       <h1 class="nome">{{ pokemon.name | titlecase }}</h1>
-      <p class="id">{{ getDisplayId(pokemon.id) }}</p>
+      <div class="id">
+        <span>{{ getDisplayId(pokemon.id) }}</span>
+      </div>
     </div>
 
-    <ul class="tipos">
-      <li class="lista tipo1">
-        <span>{{ tiposPokemon[0] | titlecase }}</span>
-      </li>
+    <div class="tipos">
+      <div class="tipo-contenedor tipo-pokemon" [ngClass]="tiposPokemon[0]">
+        <span class="tipo">{{ tiposPokemon[0] | titlecase }}</span>
+      </div>
 
-      <li *ngIf="!!tiposPokemon[1]" class="lista tipo2">
-        <span>{{ tiposPokemon[1] | titlecase }}</span>
-      </li>
-    </ul>
+      <div
+        *ngIf="!!tiposPokemon[1]"
+        class="tipo-contenedor"
+        [ngClass]="tiposPokemon[1]"
+      >
+        <span class="tipo">{{ tiposPokemon[1] | titlecase }}</span>
+      </div>
+    </div>
 
-    <ul class="detalhesFisicos">
-      <li class="lista">
+    <div class="detalhesFisicos">
+      <div class="detalhe-fisico">
         <span>Height</span><br />
         <strong>{{ getAltura(pokemon.height) }}</strong>
-      </li>
+      </div>
 
-      <li class="lista">
+      <div class="detalhe-fisico">
         <span>Weight</span><br />
         <strong>{{ getPeso(pokemon.weight) }}</strong>
-      </li>
-    </ul>
+      </div>
 
-    <ul class="forcasEFraquezas">
-      <li class="lista">
-        <span>Strengths</span> <br />
-        <span *ngFor="let forca of forcasPokemon">{{ forca }}</span>
-      </li>
+      <div class="detalhe-fisico">
+        <span>Abilities</span> <br />
+        <select name="habiliades" class="habilidade">
+          <option *ngFor="let habilidade of habilidadesPokemon">
+            <strong>{{ habilidade | titlecase }}</strong>
+          </option>
+        </select>
+      </div>
+    </div>
 
-      <li class="lista">
-        <span>Weaknesses</span><br />
-        <span *ngFor="let fraqueza of fraquezasPokemon">{{ fraqueza }}</span>
-      </li>
+    <div class="forcasEFraquezas">
+      <div class="resistencias">
+        <h4>Resistances</h4>
+        <div class="resistencias-contenedor">
+          <div
+            class="resistencia"
+            *ngFor="let forca of forcasPokemon"
+            [ngClass]="forca"
+          >
+            <span>{{ forca | titlecase }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fraquezas">
+        <h4>Weaknesses</h4>
+        <div class="fraquezas-contenedor">
+          <div
+            class="fraqueza"
+            *ngFor="let fraqueza of fraquezasPokemon"
+            [ngClass]="fraqueza"
+          >
+            <span>
+              {{ fraqueza | titlecase }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="stats">
+      <li class="lista"></li>
+      <li class="lista"></li>
+      <li class="lista"></li>
+      <li class="lista"></li>
+      <li class="lista"></li>
+      <li class="lista"></li>
     </ul>
   </div>
 
   <div class="imagemPokemon-container">
     <img class="imagemPokemon" [src]="imagemPokemon" />
   </div>
+</div>
 
-  <div class="button-container-left" [ngClass]="tiposPokemon[0]">
-    <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
-      <img class="icone-button" src="../../../assets/icones/back.svg" />
-    </button>
-  </div>
-
-  <button class="botaoVoltar" (click)="voltarListaPokemons()">
-    <img src="../../../assets/icones/close.svg" />
+<div class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]">
+  <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
+    <img class="icone-button" src="../../../assets/icones/back.svg" />
   </button>
+</div>
 
-  <div class="button-container-right" [ngClass]="tiposPokemon[0]">
-    <button mat-fab class="button" color="white" (click)="proximoPokemon()">
-      <img class="icone-button" src="../../../assets/icones/back.svg" />
-    </button>
-  </div>
+<button class="botaoVoltar" (click)="voltarListaPokemons()">
+  <img src="../../../assets/icones/close.svg" />
+</button>
+
+<div class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]">
+  <button mat-fab class="button" color="white" (click)="proximoPokemon()">
+    <img class="icone-button" src="../../../assets/icones/back.svg" />
+  </button>
 </div>

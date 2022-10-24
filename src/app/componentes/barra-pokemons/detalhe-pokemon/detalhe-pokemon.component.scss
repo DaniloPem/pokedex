@@ -14,16 +14,20 @@ $width-imagem: calc($width-container*0.5);
   align-items: center;
 }
 
-.tipos {
-  display: flex;
-}
-
-.grass {
+.background-grass {
   background: rgb(101, 211, 138);
 }
 
-.fire {
+.grass {
+  background-color: rgb(57, 211, 108);
+}
+
+.background-fire {
   background: rgb(255, 115, 90);
+}
+
+.fire {
+  background-color: rgb(255, 84, 53);
 }
 
 .water {
@@ -44,6 +48,9 @@ $width-imagem: calc($width-container*0.5);
 
 .poison {
   background: rgb(177, 111, 177);
+  #poison {
+    background-color: rgb(177, 79, 177);
+  }
 }
 
 .electric {
@@ -91,6 +98,7 @@ $width-imagem: calc($width-container*0.5);
 }
 
 .pokemon-container {
+  position: relative;
   display: flex;
   width: $width-container;
   height: 90vh;
@@ -98,6 +106,7 @@ $width-imagem: calc($width-container*0.5);
   z-index: 1;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
+  color: #3b3b3b;
 }
 
 
@@ -135,30 +144,101 @@ $width-imagem: calc($width-container*0.5);
 
 .nomeId {
   display: flex;
+  margin: 5% 0 0 5%;
 }
 
 .nome {
   font-weight: bold;
   font-size: 2.5vw;
+  z-index: 5;
+  color: white;
 }
 
 .id {
-  font-size: 1.5vw;
+  display: flex;
+  height: 8.5vw;
+  font-size: 8.5vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: bold;
+}
+
+.tipos {
+  display: flex;
+  margin: 0 0 5% 5%;
+  gap: 2%;
+}
+
+.tipo-contenedor {
+  border: 2px solid white;
+  padding: 1%;
+  border-radius: 10px;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tipo {
+  font-weight: bold;
+  color: white;
 }
 
 .detalhesFisicos {
   display: flex;
   align-items: flex-start;
+  margin: 0 0 5% 5%;
+  gap: 5%;
+}
+
+.detalhe-fisico {
+  text-align: center;
+}
+
+.habilidade {
+  display: flex;
+  gap: 5%;
 }
 
 .lista {
   list-style: none;
 }
 
+.forcasEFraquezas {
+  height: 22%;
+  display: flex;
+  margin: 0 0 5% 5%;
+  text-align: center;
+  gap: 7%;
+}
+
+.resistencias, .fraquezas {
+  width: 35%;
+}
+
+.resistencias-contenedor, .fraquezas-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5%;
+  padding-left: 10%;
+  margin-top: -5%;
+}
+
+.resistencia, .fraqueza {
+  width: 40%;
+  color: white;
+  margin-bottom: 5%;
+}
+
 .imagemPokemon-container {
   width: 35%;
   height: 100%;
-  background: white;
+  background-color: white;
 }
 
 .imagemPokemon {

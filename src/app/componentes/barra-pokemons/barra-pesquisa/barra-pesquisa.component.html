@@ -6,7 +6,7 @@
 </select>
 
 <label for="regioesPokemon">Região: </label>
-<select name="Regioes" id="regioesPokemon">
+<select name="regioes" id="regioesPokemon">
   <option *ngFor="let regiao of optionsRegioes" [value]="regiao.name">
     {{ regiao.name | titlecase }}
   </option>
