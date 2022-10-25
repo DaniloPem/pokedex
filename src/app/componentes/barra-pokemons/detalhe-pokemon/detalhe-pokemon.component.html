@@ -76,14 +76,29 @@
       </div>
     </div>
 
-    <ul class="stats">
-      <li class="lista"></li>
-      <li class="lista"></li>
-      <li class="lista"></li>
-      <li class="lista"></li>
-      <li class="lista"></li>
-      <li class="lista"></li>
-    </ul>
+    <div class="estadisticas">
+      <h4>Stats</h4>
+      <div class="estadisticas-contenedor">
+        <div class="estadistica" *ngFor="let estatistica of estatisticas">
+          <span class="stat-nome">{{
+            estatistica.stat | semTraco | titlecase
+          }}</span>
+          <div class="barra-estadistica">
+            <div
+              class="valor-barra-estadistica"
+              [ngStyle]="{ width: getBarraEstatistica(estatistica.valor) }"
+            ></div>
+            <ul class="separador">
+              <li class="lista"></li>
+              <li class="lista"></li>
+              <li class="lista"></li>
+              <li class="lista"></li>
+            </ul>
+          </div>
+          <span class="stat-valor">{{ estatistica.valor }}</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="imagemPokemon-container">

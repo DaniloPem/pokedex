@@ -1,3 +1,4 @@
+import { StringUtils } from './../../../utils/string.utils';
 import { PokemonsService } from '../../pokemons.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,6 +20,7 @@ export class DetalhePokemonComponent implements OnInit {
   forcasPokemon!: string[];
   imunidadesPokemon!: string[];
   habilidadesPokemon!: string[];
+  estatisticas!: any[];
 
   constructor(
     private router: Router,
@@ -45,6 +47,9 @@ export class DetalhePokemonComponent implements OnInit {
           this.habilidadesPokemon = res.abilities.map(
             (obj: any) => obj.ability.name
           );
+          this.estatisticas = res.stats.map((obj: any) => {
+            return { stat: obj.stat.name, valor: obj.base_stat };
+          });
         });
     });
   }
@@ -142,5 +147,9 @@ export class DetalhePokemonComponent implements OnInit {
   getAltura(altura: number) {
     const alturaConvertida = altura / 10;
     return `${alturaConvertida} m`;
+  }
+
+  getBarraEstatistica(valor: number) {
+    return `${(valor / 255) * 100}%`;
   }
 }

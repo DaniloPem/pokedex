@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RetratoPokemonComponent } from './retrato-pokemon/retrato-pokemon.component';
 import { PokemonsComponent } from './pokemons.component';
+import { SemTracoPipe } from 'src/app/pipes/sem-traco.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PokemonsComponent } from './pokemons.component';
     PokemonsComponent,
     BarraPesquisaComponent,
     DetalhePokemonComponent,
+    SemTracoPipe,
   ],
   imports: [
     CommonModule,
