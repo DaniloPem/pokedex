@@ -38,66 +38,67 @@ $width-imagem: calc($width-container*0.5);
   background-color: rgb(52, 147, 255);
 }
 
-.ice {
+.background-ice {
   background: rgb(109, 223, 252);
 }
 
-.bug {
+.background-bug {
   background: rgb(193, 255, 100);
 }
 
-.normal {
+.background-normal {
   background: rgb(167, 167, 167);
 }
 
-.poison {
+.background-poison {
   background: rgb(177, 111, 177);
-  #poison {
-    background-color: rgb(177, 79, 177);
-  }
 }
 
-.electric {
+.background-poison {
+  background-color: rgb(177, 79, 177);
+}
+
+.background-electric {
   background: rgb(255, 255, 114);
 }
 
-.ground {
+.background-ground {
   background: rgb(180, 94, 94);
 }
 
-.fairy {
+.background-fairy {
   background: rgb(226, 152, 165);
 }
 
-.fighting {
+.background-fighting {
   background: rgb(255, 71, 71);
 }
 
-.dragon {
+.background-dragon {
   background: rgb(114, 114, 255);
 }
 
-.flying {
+.background-flying {
   background: rgb(149, 149, 255);
 }
 
-.rock {
+.background-rock {
   background: rgb(182, 132, 85);
 }
 
-.ghost {
+.background-ghost {
   background: rgb(153, 75, 255);
 }
 
-.steel{
+.background-steel{
   background: rgb(94, 148, 145);
 }
 
-.psychic {
+.background-psychic {
   background: rgb(255, 82, 120);
 }
 
-.dark {
+.background-dark {
   background: rgb(90, 91, 114);
 }
 
@@ -107,7 +108,7 @@ $width-imagem: calc($width-container*0.5);
   width: $width-container;
   height: 90vh;
   gap: 5px;
-  z-index: 1;
+  z-index: 2;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
   color: #3b3b3b;
@@ -121,7 +122,7 @@ $width-imagem: calc($width-container*0.5);
 
 .button-container-right {
   @include buttonContainer(180deg);
-  right: -6.20vw;
+  right: -6.19vw;
 }
 
 .button {
@@ -160,8 +161,8 @@ $width-imagem: calc($width-container*0.5);
 
 .id {
   display: flex;
-  height: 8.5vw;
-  font-size: 8.5vw;
+  height: 7vw;
+  font-size: 7vw;
   position: absolute;
   top: 0;
   right: 0;
@@ -187,19 +188,43 @@ $width-imagem: calc($width-container*0.5);
   align-items: center;
 }
 
-.tipo {
+.tipo-span {
   font-weight: bold;
   color: white;
 }
 
-.detalhesFisicos {
+.detalhes-fisicos {
   display: flex;
   align-items: flex-start;
+  height: 7%;
   margin: 0 0 5% 5%;
   gap: 5%;
 }
 
 .detalhe-fisico {
+  display: flex;
+  width: 21%;
+  gap: 7%;
+  text-align: center;
+}
+
+.detalhe-fisico strong {
+  margin-top: 10%;
+}
+
+.icone-contenedor {
+  height: 100%;
+}
+
+.icone-contenedor span {
+  font-size: 11px;
+}
+
+.icon {
+  height: 23px;
+}
+
+.habilidades {
   text-align: center;
 }
 
@@ -273,14 +298,40 @@ $width-imagem: calc($width-container*0.5);
   border-radius: 15px;
 }
 .imagemPokemon-container {
+  position: relative;
   width: 35%;
   height: 100%;
-  background-color: white;
+  background-color: #eee;
 }
 
 .imagemPokemon {
   width: $width-imagem;
   position: absolute;
   top: calc((100vh - $width-imagem)/2);
-  left: calc(65% - $width-imagem*0.3);
+  left: calc($width-imagem*0.3*(-1));
+}
+
+.tipos-icones-contenedor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 12%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5%;
+  padding-right: 5%;
+}
+
+.tipo-icone-contenedor {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.tipo-imagem {
+  width: 90%;
 }

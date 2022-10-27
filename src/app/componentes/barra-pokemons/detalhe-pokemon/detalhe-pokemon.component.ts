@@ -1,4 +1,3 @@
-import { StringUtils } from './../../../utils/string.utils';
 import { PokemonsService } from '../../pokemons.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

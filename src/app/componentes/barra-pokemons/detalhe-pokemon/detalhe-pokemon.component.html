@@ -12,31 +12,35 @@
     </div>
 
     <div class="tipos">
-      <div class="tipo-contenedor tipo-pokemon" [ngClass]="tiposPokemon[0]">
-        <span class="tipo">{{ tiposPokemon[0] | titlecase }}</span>
-      </div>
-
       <div
-        *ngIf="!!tiposPokemon[1]"
+        *ngFor="let tipo of tiposPokemon"
         class="tipo-contenedor"
-        [ngClass]="tiposPokemon[1]"
+        [ngClass]="tipo"
       >
-        <span class="tipo">{{ tiposPokemon[1] | titlecase }}</span>
+        <span class="tipo-span">{{ tipo | titlecase }}</span>
       </div>
     </div>
 
-    <div class="detalhesFisicos">
+    <div class="detalhes-fisicos">
       <div class="detalhe-fisico">
-        <span>Height</span><br />
+        <div class="icone-contenedor">
+          <img class="icon" src="../../../../assets/icones/height-icon.svg" />
+          <br />
+          <span>Height</span>
+        </div>
         <strong>{{ getAltura(pokemon.height) }}</strong>
       </div>
 
       <div class="detalhe-fisico">
-        <span>Weight</span><br />
+        <div class="icone-contenedor">
+          <img class="icon" src="../../../../assets/icones/weight-icon.svg" />
+          <br />
+          <span>Weight</span>
+        </div>
         <strong>{{ getPeso(pokemon.weight) }}</strong>
       </div>
 
-      <div class="detalhe-fisico">
+      <div class="habilidades">
         <span>Abilities</span> <br />
         <select name="habiliades" class="habilidade">
           <option *ngFor="let habilidade of habilidadesPokemon">
@@ -103,6 +107,14 @@
 
   <div class="imagemPokemon-container">
     <img class="imagemPokemon" [src]="imagemPokemon" />
+    <div class="tipos-icones-contenedor">
+      <div *ngFor="let tipo of tiposPokemon" class="tipo-icone-contenedor">
+        <img
+          class="tipo-imagem"
+          [src]="'../../../../assets/icones/tipos/' + tipo + '.png'"
+        />
+      </div>
+    </div>
   </div>
 </div>
 
