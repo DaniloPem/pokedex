@@ -1,7 +1,7 @@
 <div class="pokemons-container">
   <div class="barra-pesquisa">
     <app-barra-pesquisa
-      (pokemonsPesquisados)="carregarPokemons($event)"
+      (pokemonsPesquisados)="aplicarFiltro($event)"
       [filtroInicial]="filtro"
     ></app-barra-pesquisa>
   </div>

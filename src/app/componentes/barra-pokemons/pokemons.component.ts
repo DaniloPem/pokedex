@@ -28,6 +28,11 @@ export class PokemonsComponent implements OnInit {
     this.carregarPokemons(this.filtro);
   }
 
+  aplicarFiltro(filtro: string): void {
+    this.numeroPagina = 0;
+    this.carregarPokemons(filtro);
+  }
+
   carregarPokemons(filtro: string) {
     this.filtro = filtro;
     this.pokemonsService
@@ -39,7 +44,6 @@ export class PokemonsComponent implements OnInit {
           (this.numeroPagina + 1) * 20
         );
       });
-    this.numeroPagina = 0;
     this.salvarDadosService.setFiltroPesquisa(this.filtro);
   }
 
@@ -75,6 +79,5 @@ export class PokemonsComponent implements OnInit {
     this.router.navigate(['/pokemon', pokemon.name]);
     this.salvarDadosService.setPaginaPokedex(this.numeroPagina);
     this.salvarDadosService.setFiltroPesquisa(this.filtro);
-    console.log(this.filtro);
   }
 }
