@@ -15,7 +15,7 @@
   <div class="pokemons-div">
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
-      [pokemonUrl]="pokemon.url"
+      [nomePokemon]="pokemon.name"
       (click)="abrirDetalhePokemon(pokemon)"
       class="app-retrato"
     ></app-retrato-pokemon>
