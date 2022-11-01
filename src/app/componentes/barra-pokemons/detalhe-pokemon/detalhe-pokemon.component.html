@@ -5,7 +5,7 @@
 >
   <div class="detalhe-pokemon">
     <div class="nomeId">
-      <h1 class="nome">{{ pokemon.name | titlecase }}</h1>
+      <h1 class="nome">{{ pokemon.name | semTraco | titlecase }}</h1>
       <div class="id">
         <span>{{ getDisplayId(pokemon.id) }}</span>
       </div>
@@ -53,7 +53,13 @@
     <div class="forcasEFraquezas">
       <div class="resistencias">
         <h4>Resistances</h4>
-        <div class="resistencias-contenedor">
+        <div
+          class="resistencias-contenedor"
+          [ngClass]="{
+            overflow: forcasPokemon.length > 6,
+            centrar: forcasPokemon.length === 1
+          }"
+        >
           <div
             class="resistencia"
             *ngFor="let forca of forcasPokemon"
@@ -66,7 +72,13 @@
 
       <div class="fraquezas">
         <h4>Weaknesses</h4>
-        <div class="fraquezas-contenedor">
+        <div
+          class="fraquezas-contenedor"
+          [ngClass]="{
+            overflow: fraquezasPokemon.length > 6,
+            centrar: fraquezasPokemon.length === 1
+          }"
+        >
           <div
             class="fraqueza"
             *ngFor="let fraqueza of fraquezasPokemon"
@@ -105,8 +117,8 @@
     </div>
   </div>
 
-  <div class="imagemPokemon-container">
-    <img class="imagemPokemon" [src]="imagemPokemon" />
+  <div class="imagem-pokemon-contenedor">
+    <img class="imagem-pokemon" [src]="imagemPokemon" />
     <div class="tipos-icones-contenedor">
       <div *ngFor="let tipo of tiposPokemon" class="tipo-icone-contenedor">
         <img
@@ -115,6 +127,10 @@
         />
       </div>
     </div>
+    <!-- <img
+      class="fundo-imagem-pokemon"
+      src="../../../../assets/backgrounds/border.png"
+    /> -->
   </div>
 </div>
 
