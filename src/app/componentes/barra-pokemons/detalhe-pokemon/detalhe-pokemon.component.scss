@@ -42,64 +42,125 @@ $width-imagem: calc($width-container*0.5);
   background: rgb(109, 223, 252);
 }
 
+.ice {
+  background: rgb(1, 204, 255);
+}
+
 .background-bug {
-  background: rgb(193, 255, 100);
+  background: rgb(153, 192, 93);
+}
+
+.bug {
+  background-color: rgb(132, 218, 3);
 }
 
 .background-normal {
-  background: rgb(167, 167, 167);
+  background: rgb(156, 123, 129);
+}
+
+.normal {
+  background-color: rgb(99, 76, 80);;
 }
 
 .background-poison {
-  background: rgb(177, 111, 177);
+  background: rgb(165, 124, 165);
 }
 
 .background-poison {
-  background-color: rgb(177, 79, 177);
+  background-color: rgb(167, 102, 167);
+}
+
+.poison {
+  background-color: rgb(153, 47, 153);
 }
 
 .background-electric {
-  background: rgb(255, 255, 114);
+  background-color: rgb(209, 209, 76);
+}
+
+.electric {
+  background-color: rgb(226, 226, 0);
 }
 
 .background-ground {
-  background: rgb(180, 94, 94);
+  background: rgb(189, 107, 107);
+}
+
+.ground {
+  background: rgb(179, 66, 66);
 }
 
 .background-fairy {
   background: rgb(226, 152, 165);
 }
 
+.fairy {
+  background: rgb(212, 100, 120);
+}
+
 .background-fighting {
-  background: rgb(255, 71, 71);
+  background: rgb(228, 103, 103);
+}
+
+.fighting {
+  background: rgb(241, 77, 77);
 }
 
 .background-dragon {
-  background: rgb(114, 114, 255);
+  background: rgb(129, 129, 204);
+}
+
+.dragon {
+  background: rgb(71, 71, 190);
 }
 
 .background-flying {
   background: rgb(149, 149, 255);
 }
 
+.flying {
+  background: rgb(96, 96, 248);
+}
+
 .background-rock {
-  background: rgb(182, 132, 85);
+  background: rgb(187, 148, 112);
+}
+
+.rock {
+  background-color: rgb(190, 122, 59);
 }
 
 .background-ghost {
-  background: rgb(153, 75, 255);
+  background: rgb(166, 99, 255);
+}
+
+.ghost {
+  background: rgb(112, 56, 185);
 }
 
 .background-steel{
-  background: rgb(94, 148, 145);
+  background: rgb(101, 158, 155);
 }
 
+.steel{
+  background: rgb(50, 119, 114);
+}
+
+
 .background-psychic {
-  background: rgb(255, 82, 120);
+  background: rgb(201, 123, 140);
+}
+
+.psychic {
+  background: rgb(199, 87, 111);
 }
 
 .background-dark {
-  background: rgb(90, 91, 114);
+  background: rgb(118, 118, 139);
+}
+
+.dark {
+  background: rgb(70, 70, 85);
 }
 
 .pokemon-container {
@@ -259,9 +320,10 @@ $width-imagem: calc($width-container*0.5);
 }
 
 .resistencia, .fraqueza {
-  width: 40%;
+  width: 45%;
   color: white;
   margin-bottom: 5%;
+  border-radius: 10px;
 }
 
 .estadisticas {
@@ -293,18 +355,18 @@ $width-imagem: calc($width-container*0.5);
 }
 
 .valor-barra-estadistica {
-  background-color: white;
+  background-color: #eee;
   height: 100%;
   border-radius: 15px;
 }
-.imagemPokemon-container {
+.imagem-pokemon-contenedor {
   position: relative;
   width: 35%;
   height: 100%;
   background-color: #eee;
 }
 
-.imagemPokemon {
+.imagem-pokemon {
   width: $width-imagem;
   position: absolute;
   top: calc((100vh - $width-imagem)/2);
@@ -334,4 +396,33 @@ $width-imagem: calc($width-container*0.5);
 
 .tipo-imagem {
   width: 90%;
+}
+
+.fundo-imagem-pokemon {
+  width: 90%;
+}
+
+.overflow {
+  overflow: auto;
+  height: 70%;
+}
+
+.overflow::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+}
+
+.overflow::-webkit-scrollbar-thumb {
+  background-color: #eee;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+.centrar {
+  justify-content: center !important;
+  padding-left: 0 !important;
 }

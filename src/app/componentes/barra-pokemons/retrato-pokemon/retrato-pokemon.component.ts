@@ -7,14 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./retrato-pokemon.component.scss'],
 })
 export class RetratoPokemonComponent implements OnInit {
-  @Input() pokemonUrl!: string;
+  @Input() nomePokemon!: string;
+  idPokemon!: number;
   urlImagem = '';
 
   constructor(private pokemonsService: PokemonsService) {}
 
   ngOnInit(): void {
-    this.pokemonsService.buscarPorUrl(this.pokemonUrl).subscribe((res: any) => {
-      this.urlImagem = res.sprites.other['official-artwork'].front_default;
-    });
+    this.pokemonsService
+      .pegarPokemon(this.nomePokemon)
+      .subscribe((res: any) => {
+        this.idPokemon = res.id;
+        this.urlImagem = res.sprites.other['official-artwork'].front_default;
+      });
   }
 }
