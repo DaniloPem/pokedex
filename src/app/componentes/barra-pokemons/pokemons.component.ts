@@ -15,6 +15,7 @@ export class PokemonsComponent implements OnInit {
   pokemonSelecionado: any;
   numeroPagina!: number;
   filtro!: string;
+  filtroPorTipo!: string;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -23,20 +24,27 @@ export class PokemonsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.filtroPorTipo = this.salvarDadosService.getTipoPesquisa() ?? 'todos';
     this.filtro = this.salvarDadosService.getFiltroPesquisa() ?? '';
     this.numeroPagina = this.salvarDadosService.getPaginaPokedex() ?? 0;
-    this.carregarPokemons(this.filtro);
+    this.carregarPokemons();
   }
 
   aplicarFiltro(filtro: string): void {
+    this.filtro = filtro;
     this.numeroPagina = 0;
-    this.carregarPokemons(filtro);
+    this.carregarPokemons();
   }
 
-  carregarPokemons(filtro: string) {
-    this.filtro = filtro;
+  salvarTipo(tipo: string): void {
+    this.filtroPorTipo = tipo;
+    this.numeroPagina = 0;
+    this.carregarPokemons();
+  }
+
+  carregarPokemons() {
     this.pokemonsService
-      .buscarPokemon(this.filtro)
+      .buscarPokemon(this.filtro, this.filtroPorTipo)
       .subscribe((pokemonsFiltrados: Pokemon[]) => {
         this.pokemonsTodos = pokemonsFiltrados;
         this.pokemons = this.pokemonsTodos.slice(
@@ -45,6 +53,7 @@ export class PokemonsComponent implements OnInit {
         );
       });
     this.salvarDadosService.setFiltroPesquisa(this.filtro);
+    this.salvarDadosService.setTipoPesquisa(this.filtroPorTipo);
   }
 
   proximaPagina() {

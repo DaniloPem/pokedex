@@ -1,5 +1,5 @@
 <label for="tiposPokemon">Tipos: </label>
-<select name="Tipos" id="tiposPokemon">
+<select name="tipos" id="tiposPokemon" [formControl]="tiposControl">
   <option *ngFor="let tipo of optionsTipos" [value]="tipo.name">
     {{ tipo.name | titlecase }}
   </option>

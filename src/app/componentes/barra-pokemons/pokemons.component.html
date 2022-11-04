@@ -1,8 +1,10 @@
 <div class="pokemons-container">
   <div class="barra-pesquisa">
     <app-barra-pesquisa
+      (pokemonsFiltradosPorTipo)="salvarTipo($event)"
       (pokemonsPesquisados)="aplicarFiltro($event)"
       [filtroInicial]="filtro"
+      [tipoSelecionado]="filtroPorTipo"
     ></app-barra-pesquisa>
   </div>
 

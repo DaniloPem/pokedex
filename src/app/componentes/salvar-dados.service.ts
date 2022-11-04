@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class SalvarDadosService {
   private pagina!: number;
   private filtro!: string;
+  private tipo!: string;
 
   constructor() {}
 
@@ -19,11 +20,19 @@ export class SalvarDadosService {
     return this.filtro;
   }
 
+  getTipoPesquisa(): string {
+    return this.tipo;
+  }
+
   setPaginaPokedex(valor: number) {
     this.pagina = valor;
   }
 
   setFiltroPesquisa(valor: string) {
     this.filtro = valor;
+  }
+
+  setTipoPesquisa(valor: string) {
+    this.tipo = valor;
   }
 }

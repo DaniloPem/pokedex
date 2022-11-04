@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 const API_URL = 'https://pokeapi.co/api/v2';
 
@@ -32,16 +32,34 @@ export class PokemonsService {
     return this.httpClient.get(`${API_URL}/pokemon/${nomePokemon}`);
   }
 
-  buscarPokemon(valorBuscado?: string) {
-    const nomeId = valorBuscado?.toLowerCase();
-    return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(
-      map((response: any) => {
-        return response.results.filter(
-          (pokemon: { name: string; url: string }) =>
-            pokemon.name.includes(nomeId ?? '')
-        );
-      })
-    );
+  buscarPokemon(filtroPeloInput?: string, filtroPorTipo?: string) {
+    const nomeId = filtroPeloInput?.toLowerCase();
+    if (filtroPorTipo === 'todos') {
+      return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(
+        map((response: any) => {
+          return response.results.filter(
+            (pokemon: { name: string; url: string }) =>
+              pokemon.name.includes(nomeId ?? '')
+          );
+        })
+      );
+    } else {
+      return this.httpClient.get(`${API_URL}/type/${filtroPorTipo}`).pipe(
+        map((response: any) => {
+          // return response.pokemon.map((res: any) => {
+          //   return res.pokemon.filter(
+          //     (pokemon: { name: string; url: string }) =>
+          //       pokemon.name.includes(nomeId ?? '')
+          //   );
+          // });
+          return response.pokemon
+            .map((poke: any) => poke.pokemon)
+            .filter((pokemon: { name: string; url: string }) =>
+              pokemon.name.includes(nomeId ?? '')
+            );
+        })
+      );
+    }
   }
 
   buscarTipo(tipoPokemon?: string) {
