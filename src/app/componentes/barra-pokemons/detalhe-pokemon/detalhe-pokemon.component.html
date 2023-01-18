@@ -24,7 +24,7 @@
     <div class="detalhes-fisicos">
       <div class="detalhe-fisico">
         <div class="icone-contenedor">
-          <img class="icon" src="../../../../assets/icones/height-icon.svg" />
+          <img class="icon" src="./assets/icones/height-icon.svg" />
           <br />
           <span>Height</span>
         </div>
@@ -33,7 +33,7 @@
 
       <div class="detalhe-fisico">
         <div class="icone-contenedor">
-          <img class="icon" src="../../../../assets/icones/weight-icon.svg" />
+          <img class="icon" src="./assets/icones/weight-icon.svg" />
           <br />
           <span>Weight</span>
         </div>
@@ -123,29 +123,29 @@
       <div *ngFor="let tipo of tiposPokemon" class="tipo-icone-contenedor">
         <img
           class="tipo-imagem"
-          [src]="'../../../../assets/icones/tipos/' + tipo + '.png'"
+          [src]="'./assets/icones/tipos/' + tipo + '.png'"
         />
       </div>
     </div>
     <!-- <img
       class="fundo-imagem-pokemon"
-      src="../../../../assets/backgrounds/border.png"
+      src="./assets/backgrounds/border.png"
     /> -->
   </div>
 </div>
 
 <div class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]">
   <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
-    <img class="icone-button" src="../../../assets/icones/back.svg" />
+    <img class="icone-button" src="./assets/icones/back.svg" />
   </button>
 </div>
 
 <button class="botaoVoltar" (click)="voltarListaPokemons()">
-  <img src="../../../assets/icones/close.svg" />
+  <img src="./assets/icones/close.svg" />
 </button>
 
 <div class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]">
   <button mat-fab class="button" color="white" (click)="proximoPokemon()">
-    <img class="icone-button" src="../../../assets/icones/back.svg" />
+    <img class="icone-button" src="./assets/icones/back.svg" />
   </button>
 </div>
