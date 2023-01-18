@@ -46,12 +46,6 @@ export class PokemonsService {
     } else {
       return this.httpClient.get(`${API_URL}/type/${filtroPorTipo}`).pipe(
         map((response: any) => {
-          // return response.pokemon.map((res: any) => {
-          //   return res.pokemon.filter(
-          //     (pokemon: { name: string; url: string }) =>
-          //       pokemon.name.includes(nomeId ?? '')
-          //   );
-          // });
           return response.pokemon
             .map((poke: any) => poke.pokemon)
             .filter((pokemon: { name: string; url: string }) =>

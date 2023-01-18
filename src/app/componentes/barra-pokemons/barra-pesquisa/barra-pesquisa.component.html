@@ -1,24 +1,30 @@
-<label for="tiposPokemon">Tipos: </label>
-<select name="tipos" id="tiposPokemon" [formControl]="tiposControl">
-  <option *ngFor="let tipo of optionsTipos" [value]="tipo.name">
-    {{ tipo.name | titlecase }}
-  </option>
-</select>
+<div class="barra-pesquisa">
+  <div class="select-contenedor">
+    <label for="tiposPokemon">Tipo</label><br />
+    <select name="tipos" id="tiposPokemon" [formControl]="tiposControl">
+      <option *ngFor="let tipo of optionsTipos" [value]="tipo.name">
+        {{ tipo.name | titlecase }}
+      </option>
+    </select>
+  </div>
 
-<label for="regioesPokemon">Região: </label>
-<select name="regioes" id="regioesPokemon">
-  <option *ngFor="let regiao of optionsRegioes" [value]="regiao.name">
-    {{ regiao.name | titlecase }}
-  </option>
-</select>
+  <div class="select-contenedor">
+    <label for="regioesPokemon">Região</label><br />
+    <select name="regioes" id="regioesPokemon">
+      <option *ngFor="let regiao of optionsRegioes" [value]="regiao.name">
+        {{ regiao.name | titlecase }}
+      </option>
+    </select>
+  </div>
 
-<div class="input-search">
-  <mat-form-field appearance="outline">
-    <input
-      matInput
-      placeholder="Search name or id"
-      [formControl]="searchControl"
-    />
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
+  <div class="input-search">
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        placeholder="Search name or id"
+        [formControl]="searchControl"
+      />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </div>
 </div>

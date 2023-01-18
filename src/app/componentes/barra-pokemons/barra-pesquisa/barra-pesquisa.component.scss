@@ -1,3 +1,8 @@
+.barra-pesquisa {
+  display: flex;
+  gap: 20%;
+}
+
 label {
   color: white;
 }
@@ -6,5 +11,9 @@ label {
   position: absolute;
   top: -2vh;
   right: -1vw;
+}
+
+.select-contenedor {
+  width: 20%;
 }
 
