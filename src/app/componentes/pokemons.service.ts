@@ -34,7 +34,7 @@ export class PokemonsService {
 
   buscarPokemon(filtroPeloInput?: string, filtroPorTipo?: string) {
     const nomeId = filtroPeloInput?.toLowerCase();
-    if (filtroPorTipo === 'todos') {
+    if (filtroPorTipo === 'all') {
       return this.httpClient.get(`${API_URL}/pokemon/?limit=905`).pipe(
         map((response: any) => {
           return response.results.filter(

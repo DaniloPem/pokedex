@@ -1,21 +1,21 @@
 <div class="barra-pesquisa">
   <div class="select-contenedor">
-    <label for="tiposPokemon">Tipo</label><br />
-    <select name="tipos" id="tiposPokemon" [formControl]="tiposControl">
-      <option *ngFor="let tipo of optionsTipos" [value]="tipo.name">
+    <label for="tiposPokemon">Type</label><br />
+    <select class="select" name="tipos" id="tiposPokemon" [formControl]="tiposControl">
+      <option class="option" *ngFor="let tipo of optionsTipos" [value]="tipo.name">
         {{ tipo.name | titlecase }}
       </option>
     </select>
   </div>
 
-  <div class="select-contenedor">
+  <!-- <div class="select-contenedor">
     <label for="regioesPokemon">Região</label><br />
     <select name="regioes" id="regioesPokemon">
       <option *ngFor="let regiao of optionsRegioes" [value]="regiao.name">
         {{ regiao.name | titlecase }}
       </option>
     </select>
-  </div>
+  </div> -->
 
   <div class="input-search">
     <mat-form-field appearance="outline">
@@ -24,7 +24,7 @@
         placeholder="Search name or id"
         [formControl]="searchControl"
       />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 </div>

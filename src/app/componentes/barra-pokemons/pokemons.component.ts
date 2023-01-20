@@ -24,7 +24,7 @@ export class PokemonsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.filtroPorTipo = this.salvarDadosService.getTipoPesquisa() ?? 'todos';
+    this.filtroPorTipo = this.salvarDadosService.getTipoPesquisa() ?? 'all';
     this.filtro = this.salvarDadosService.getFiltroPesquisa() ?? '';
     this.numeroPagina = this.salvarDadosService.getPaginaPokedex() ?? 0;
     this.carregarPokemons();

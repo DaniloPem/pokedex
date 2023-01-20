@@ -9,8 +9,8 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./barra-pesquisa.component.scss'],
 })
 export class BarraPesquisaComponent implements OnInit {
-  optionsTipos = [{ name: 'todos' }];
-  optionsRegioes = [{ name: 'todos' }];
+  optionsTipos = [{ name: 'all' }];
+  optionsRegioes = [{ name: 'all' }];
   @Input() tipoSelecionado!: string;
   @Input() filtroInicial!: string;
   tiposControl = new FormControl();

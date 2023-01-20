@@ -1,19 +1,30 @@
 .barra-pesquisa {
   display: flex;
-  gap: 20%;
+  gap: 10%;
 }
 
 label {
-  color: white;
-}
-
-.input-search {
-  position: absolute;
-  top: -2vh;
-  right: -1vw;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .select-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20%;
+  height: 56.75px;
+  text-align: center;
+  gap: 2px;
+}
+
+.select {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+:host .mat-input-element, ::placeholder{
+  color: rgba(255, 255, 255, 0.7);
 }
 
