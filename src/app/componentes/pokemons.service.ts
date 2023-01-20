@@ -11,7 +11,7 @@ export class PokemonsService {
   constructor(private httpClient: HttpClient) {}
 
   listarPokemons() {
-    return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`);
+    return this.httpClient.get(`${API_URL}/pokemon/?limit=905`);
   }
 
   listarTipos() {
@@ -35,7 +35,7 @@ export class PokemonsService {
   buscarPokemon(filtroPeloInput?: string, filtroPorTipo?: string) {
     const nomeId = filtroPeloInput?.toLowerCase();
     if (filtroPorTipo === 'todos') {
-      return this.httpClient.get(`${API_URL}/pokemon/?limit=2000`).pipe(
+      return this.httpClient.get(`${API_URL}/pokemon/?limit=905`).pipe(
         map((response: any) => {
           return response.results.filter(
             (pokemon: { name: string; url: string }) =>
