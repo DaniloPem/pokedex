@@ -14,7 +14,7 @@
     </button>
   </div>
 
-  <div class="pokemons-div">
+  <div class="pokemons-div" *ngIf="pokemons.length > 0; else mensagemNaoTemPokemons">
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
       [nomePokemon]="pokemon.name"
@@ -22,6 +22,10 @@
       class="app-retrato"
     ></app-retrato-pokemon>
   </div>
+
+  <ng-template #mensagemNaoTemPokemons>
+    <p class="mensagemNaoTemPokemons">No pokemon found.</p>
+  </ng-template>
 
   <div class="button-container-right">
     <button mat-fab class="button" color="white" (click)="proximaPagina()">
