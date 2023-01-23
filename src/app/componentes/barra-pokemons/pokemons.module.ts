@@ -12,6 +12,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RetratoPokemonComponent } from './retrato-pokemon/retrato-pokemon.component';
 import { PokemonsComponent } from './pokemons.component';
 import { SemTracoPipe } from 'src/app/pipes/sem-traco.pipe';
+import { MatOptionModule } from '@angular/material/core';
+import {MatSelectModule, MAT_SELECT_SCROLL_STRATEGY} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ScrollStrategyOptions } from '@angular/cdk/overlay';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +32,8 @@ import { SemTracoPipe } from 'src/app/pipes/sem-traco.pipe';
     MatIconModule,
     MatButtonToggleModule,
     MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,

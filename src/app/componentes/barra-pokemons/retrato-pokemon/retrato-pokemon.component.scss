@@ -13,6 +13,13 @@
   position: relative;
 }
 
+.retrato-div:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
 .retrato-pokemon {
   max-height: 65%;
   max-width: 65%;
