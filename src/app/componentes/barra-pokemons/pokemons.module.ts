@@ -14,6 +14,7 @@ import { PokemonsComponent } from './pokemons.component';
 import { SemTracoPipe } from 'src/app/pipes/sem-traco.pipe';
 import { MatOptionModule } from '@angular/material/core';
 import {MatSelectModule, MAT_SELECT_SCROLL_STRATEGY} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 
@@ -34,6 +35,7 @@ import { ScrollStrategyOptions } from '@angular/cdk/overlay';
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,

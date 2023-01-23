@@ -40,14 +40,14 @@
         <strong>{{ getPeso(pokemon.weight) }}</strong>
       </div>
 
-      <div class="habilidades">
-        <span>Abilities</span> <br />
-        <select name="habiliades" class="habilidade">
-          <option *ngFor="let habilidade of habilidadesPokemon">
-            <strong>{{ habilidade | titlecase }}</strong>
-          </option>
-        </select>
-      </div>
+      <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Abilities
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p *ngFor="let habilidade of habilidadesPokemon">{{ habilidade | semTraco | titlecase }}</p>
+  </mat-expansion-panel>
     </div>
 
     <div class="forcasEFraquezas">
