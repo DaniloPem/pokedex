@@ -14,7 +14,7 @@
     </button>
   </div>
 
-  <div class="pokemons-div" *ngIf="pokemons.length > 0; else mensagemNaoTemPokemons">
+  <div class="pokemons-div" *ngIf="!!pokemons && pokemons.length > 0; else mensagemNaoTemPokemons">
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
       [nomePokemon]="pokemon.name"

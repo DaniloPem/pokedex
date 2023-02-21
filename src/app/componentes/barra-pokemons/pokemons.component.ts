@@ -14,7 +14,7 @@ export class PokemonsComponent implements OnInit {
   @ViewChild('botaoAnterior') botaoAnterior!: ElementRef<HTMLButtonElement>;
 
   pokemonsTodos!: Pokemon[];
-  pokemons!: Pokemon[];
+  pokemons: Pokemon[] | undefined;
   pokemonSelecionado: any;
   numeroPagina!: number;
   filtro!: string;
