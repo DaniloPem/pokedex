@@ -2,7 +2,8 @@ import { SalvarDadosService } from './../salvar-dados.service';
 import { Router } from '@angular/router';
 import { PokemonsService } from './../pokemons.service';
 import { Pokemon } from './../pokemons';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-pokemons',
@@ -10,12 +11,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemons.component.scss'],
 })
 export class PokemonsComponent implements OnInit {
+  @ViewChild('botaoAnterior') botaoAnterior!: ElementRef<HTMLButtonElement>;
+
   pokemonsTodos!: Pokemon[];
   pokemons!: Pokemon[];
   pokemonSelecionado: any;
   numeroPagina!: number;
   filtro!: string;
   filtroPorTipo!: string;
+  numeroTotalDePaginas!: number;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -47,6 +51,7 @@ export class PokemonsComponent implements OnInit {
       .buscarPokemon(this.filtro, this.filtroPorTipo)
       .subscribe((pokemonsFiltrados: Pokemon[]) => {
         this.pokemonsTodos = pokemonsFiltrados;
+        this.numeroTotalDePaginas = Math.floor(this.pokemonsTodos.length / 20);
         this.pokemons = this.pokemonsTodos.slice(
           this.numeroPagina * 20,
           (this.numeroPagina + 1) * 20
