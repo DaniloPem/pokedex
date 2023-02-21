@@ -135,7 +135,7 @@ export class DetalhePokemonComponent implements OnInit {
   }
 
   getDisplayId(id: number): string {
-    return '#' + `00${id}`.slice(-3);
+    return id < 1000 ? '#' + `00${id}`.slice(-3) : '#' + `${id}`;
   }
 
   getPeso(peso: number) {
