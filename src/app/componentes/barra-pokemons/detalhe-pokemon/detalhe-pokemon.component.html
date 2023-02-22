@@ -51,7 +51,7 @@
     </div>
 
     <div class="forcasEFraquezas">
-      <div class="resistencias">
+      <div class="resistencias" *ngIf="forcasPokemon">
         <h4>Resistances</h4>
         <div
           class="resistencias-contenedor"
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="fraquezas">
+      <div class="fraquezas" *ngIf="fraquezasPokemon">
         <h4>Weaknesses</h4>
         <div
           class="fraquezas-contenedor"
@@ -134,7 +134,7 @@
   </div>
 </div>
 
-<div class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]">
+<div *ngIf="tiposPokemon" class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]">
   <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
     <img class="icone-button" src="./assets/icones/back.svg" />
   </button>
@@ -144,7 +144,7 @@
   <img src="./assets/icones/close.svg" />
 </button>
 
-<div class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]">
+<div *ngIf="tiposPokemon" class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]">
   <button mat-fab class="button" color="white" (click)="proximoPokemon()">
     <img class="icone-button" src="./assets/icones/back.svg" />
   </button>
