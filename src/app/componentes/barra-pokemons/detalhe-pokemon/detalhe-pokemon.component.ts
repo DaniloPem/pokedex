@@ -43,9 +43,10 @@ export class DetalhePokemonComponent implements OnInit {
             res.sprites.other['official-artwork'].front_default;
           this.tiposPokemon = res.types.map((obj: any) => obj.type.name);
           this.pegarDebilidadesFortalecas(this.tiposPokemon);
-          this.habilidadesPokemon = res.abilities.map(
+          const nomeHabilidades = res.abilities.map(
             (obj: any) => obj.ability.name
           );
+          this.habilidadesPokemon = [...new Set<string>(nomeHabilidades)];
           this.estatisticas = res.stats.map((obj: any) => {
             return { stat: obj.stat.name, valor: obj.base_stat };
           });
