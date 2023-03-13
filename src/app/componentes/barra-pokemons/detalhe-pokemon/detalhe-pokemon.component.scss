@@ -1,16 +1,14 @@
 $width-container: calc(100vw - (25vw - 5px)*2);
 $width-imagem: calc($width-container*0.5);
+$larguraBotaoContainer: 6.25vw;
 
-@mixin buttonContainer($rotacao) {
+@mixin buttonContainer {
   position: absolute;
-  border-radius: 50%;
-  width: 12.5vw;
-  height: 12.5vw;
-  top: calc((100vh - 13.5vw)/2);
-  transform: rotate($rotacao);
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+  width: $larguraBotaoContainer;
+  height: calc($larguraBotaoContainer * 2);
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
-  display: flex;
   align-items: center;
 }
 
@@ -177,18 +175,21 @@ $width-imagem: calc($width-container*0.5);
 
 
 .button-container-left {
-  @include buttonContainer(0deg);
-  left: -6.21vw;
+  @include buttonContainer;
+  border-bottom-left-radius: $larguraBotaoContainer * 2;
+  border-top-left-radius: $larguraBotaoContainer * 2;
+  left: calc($larguraBotaoContainer * (-1));
 }
 
 .button-container-right {
-  @include buttonContainer(180deg);
-  right: -6.19vw;
+  @include buttonContainer;
+  border-bottom-right-radius: $larguraBotaoContainer * 2;
+  border-top-right-radius: $larguraBotaoContainer * 2;
+  right: calc($larguraBotaoContainer * (-1));
 }
 
-.button {
+.botao-anterior, .botao-proximo {
   cursor: pointer;
-  margin: 0 1.6vw;
 }
 
 .icone-button {
@@ -196,10 +197,28 @@ $width-imagem: calc($width-container*0.5);
   height: 24px;
 }
 
-.botaoVoltar {
+.botao-fechar {
   position: absolute;
-  right: 0;
-  top: -0;
+  right: 12px;
+  top: -27px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0;
+  margin: 0;
+
+  & img {
+    transition: 0.3s;
+  }
+
+  &:hover {
+    background: rgba(80, 80, 80, 0.6);
+
+    & img {
+      filter: brightness(0) invert(1);
+    }
+  }
 }
 
 .detalhe-pokemon {

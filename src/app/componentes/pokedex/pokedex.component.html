@@ -1,23 +1,27 @@
-<div class="left">
-  <div class="setor-circular-left-top"></div>
-  <div class="sc-left-top"></div>
+<div class="pokedex-container" fxLayout="row">
+  <div class="left" fxFlex="25">
+    <div class="setor-circular-left-top"></div>
+    <div class="sc-left-top"></div>
 
-  <div class="setor-circular-left-bottom"></div>
-  <div class="sc-left-bottom"></div>
+    <div class="semicirculo-left"></div>
+
+    <div class="setor-circular-left-bottom"></div>
+    <div class="sc-left-bottom"></div>
+
+  </div>
+
+
+  <div class="center" fxFlex>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="right" fxFlex="25">
+    <div class="setor-circular-right-top"></div>
+    <div class="sc-right-top"></div>
+
+    <div class="semicirculo-right"></div>
+
+    <div class="setor-circular-right-bottom"></div>
+    <div class="sc-right-bottom"></div>
+  </div>
 </div>
-
-<div class="semicirculo-left"></div>
-
-<div class="center">
-  <router-outlet></router-outlet>
-</div>
-
-<div class="right">
-  <div class="setor-circular-right-top"></div>
-  <div class="sc-right-top"></div>
-
-  <div class="setor-circular-right-bottom"></div>
-  <div class="sc-right-bottom"></div>
-</div>
-
-<div class="semicirculo-right"></div>

@@ -132,20 +132,21 @@
       src="./assets/backgrounds/border.png"
     /> -->
   </div>
-</div>
 
-<div *ngIf="tiposPokemon" class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]">
-  <button mat-fab class="button" color="white" (click)="anteriorPokemon()">
-    <img class="icone-button" src="./assets/icones/back.svg" />
+  <div *ngIf="tiposPokemon" class="button-container-left" [ngClass]="'background-' + tiposPokemon[0]" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-fab class="botao-anterior" color="white" (click)="anteriorPokemon()">
+      <img class="icone-button" src="./assets/icones/back.svg" />
+    </button>
+  </div>
+
+  <button class="botao-fechar" (click)="voltarListaPokemons()">
+    <img src="./assets/icones/close.svg" />
   </button>
+
+  <div *ngIf="tiposPokemon" class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-fab class="botao-proximo" color="white" (click)="proximoPokemon()">
+      <img class="icone-button" src="./assets/icones/forward.svg" />
+    </button>
+  </div>
 </div>
 
-<button class="botaoVoltar" (click)="voltarListaPokemons()">
-  <img src="./assets/icones/close.svg" />
-</button>
-
-<div *ngIf="tiposPokemon" class="button-container-right" [ngClass]="'background-' + tiposPokemon[0]">
-  <button mat-fab class="button" color="white" (click)="proximoPokemon()">
-    <img class="icone-button" src="./assets/icones/back.svg" />
-  </button>
-</div>

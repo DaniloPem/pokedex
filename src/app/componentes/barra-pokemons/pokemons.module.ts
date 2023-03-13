@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { DetalhePokemonComponent } from './detalhe-pokemon/detalhe-pokemon.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { ScrollStrategyOptions } from '@angular/cdk/overlay';
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,
+    FlexLayoutModule
   ],
   exports: [PokemonsComponent],
 })
