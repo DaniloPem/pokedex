@@ -1,5 +1,7 @@
-<div class="retrato-div">
-  <span class="id"> {{ idPokemon }}</span>
-  <img [src]="urlImagem" class="retrato-pokemon" />
-  <span class="nome">{{ nomePokemon | semTraco | titlecase }}</span>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div class="retrato-div">
+    <span class="id"> {{ idPokemon }}</span>
+    <img [src]="urlImagem" class="retrato-pokemon" />
+    <span class="nome">{{ nomePokemon | semTraco | titlecase }}</span>
+  </div>
 </div>

@@ -8,24 +8,25 @@
     ></app-barra-pesquisa>
   </div>
 
-  <div class="button-container-left" fxLayout="row" fxLayoutAlign="space-around center">
-    <button mat-fab class="botao-anterior" color="white" (click)="anteriorPagina()" [disabled]="numeroPagina === 0">
-      <img class="icone-button" src="./assets/icones/back.svg" />
-    </button>
-  </div>
-
-  <div class="pokemons-div" *ngIf="!!pokemons && pokemons.length > 0; else mensagemNaoTemPokemons">
+  <div class="pokemons-div" *ngIf="!!pokemons && pokemons.length > 0; else mensagemNaoTemPokemons" fxLayout="row wrap">
     <app-retrato-pokemon
       *ngFor="let pokemon of pokemons"
       [nomePokemon]="pokemon.name"
       (click)="abrirDetalhePokemon(pokemon)"
       class="app-retrato"
+      fxFlex="20"
     ></app-retrato-pokemon>
   </div>
 
   <ng-template #mensagemNaoTemPokemons>
     <p class="mensagemNaoTemPokemons">No pokemon found.</p>
   </ng-template>
+
+  <div class="button-container-left" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-fab class="botao-anterior" color="white" (click)="anteriorPagina()" [disabled]="numeroPagina === 0">
+      <img class="icone-button" src="./assets/icones/back.svg" />
+    </button>
+  </div>
 
   <div class="button-container-right" fxLayout="row" fxLayoutAlign="space-around center">
     <button mat-fab class="botao-proximo" color="white" (click)="proximaPagina()" [disabled]="numeroPagina === numeroTotalDePaginas">
