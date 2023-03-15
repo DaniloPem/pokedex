@@ -1,5 +1,4 @@
-$width-container: calc(100vw - (25vw - 5px)*2);
-$width-imagem: calc($width-container*0.5);
+$width-imagem: calc(50vw*0.5);
 $larguraBotaoContainer: 6.25vw;
 
 @mixin buttonContainer {
@@ -164,7 +163,7 @@ $larguraBotaoContainer: 6.25vw;
 .pokemon-container {
   position: relative;
   display: flex;
-  width: $width-container;
+  width: 50vw;
   height: 90vh;
   gap: 5px;
   z-index: 2;

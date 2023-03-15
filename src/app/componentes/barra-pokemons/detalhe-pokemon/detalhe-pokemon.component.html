@@ -1,8 +1,8 @@
 <div
   *ngIf="!!pokemon"
   class="pokemon-container"
-  [ngClass]="'background-' + tiposPokemon[0]"
->
+  [ngClass]="'background-' + tiposPokemon[0]">
+
   <div class="detalhe-pokemon">
     <div class="nomeId">
       <h1 class="nome">{{ pokemon.name | semTraco | titlecase }}</h1>
@@ -46,8 +46,8 @@
         Abilities
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <p *ngFor="let habilidade of habilidadesPokemon">{{ habilidade | semTraco | titlecase }}</p>
-  </mat-expansion-panel>
+      <p *ngFor="let habilidade of habilidadesPokemon">{{ habilidade | semTraco | titlecase }}</p>
+    </mat-expansion-panel>
     </div>
 
     <div class="forcasEFraquezas">
